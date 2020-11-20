@@ -1,0 +1,2 @@
+rootProject.name='Need For Speed'
+include ':app'
