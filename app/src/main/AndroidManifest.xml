@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".buyingScreen"></activity>
+        <activity android:name=".choose_niche"></activity>
+        <activity android:name=".buyingScreen" />
         <activity android:name=".sellingScreen" />
         <activity
             android:name=".SettingsActivity"
