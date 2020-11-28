@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 /* Create an Intent that will start the Menu-Activity. */
                 Intent mainIntent = new Intent(MainActivity.this, introScreen.class);
-                Intent trueIntent = new Intent(MainActivity.this, shoppingScreen.class);
+                Intent trueIntent = new Intent(MainActivity.this, choose_niche.class);
                 SharedPreferences settings = getSharedPreferences("your_preference_name", 0);
                 boolean isLoggedIn = settings.getBoolean("LoggedIn", false);
 

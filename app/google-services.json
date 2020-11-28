@@ -1,34 +1,42 @@
 {
   "project_info": {
-    "project_number": "596956862611",
-    "firebase_url": "https://needforseedprac.firebaseio.com",
-    "project_id": "needforseedprac",
-    "storage_bucket": "needforseedprac.appspot.com"
+    "project_number": "362320712964",
+    "firebase_url": "https://need-for-seed.firebaseio.com",
+    "project_id": "need-for-seed",
+    "storage_bucket": "need-for-seed.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:596956862611:android:5fa8c6385ce2b7cf981566",
+        "mobilesdk_app_id": "1:362320712964:android:4d76904b6219e16ff6ec51",
         "android_client_info": {
           "package_name": "com.example.needforspeed"
         }
       },
       "oauth_client": [
         {
-          "client_id": "596956862611-qkiqsbeacqpsti95kddc92iovitlkpnp.apps.googleusercontent.com",
+          "client_id": "362320712964-i8fed9gata0n1jei64mqep60kco0j8qo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.needforspeed",
+            "certificate_hash": "cdf16e9944cb3f1f04a2ee16b2aa57e3287959f1"
+          }
+        },
+        {
+          "client_id": "362320712964-0s2cjn0hr2g109n8b7c2ejv00da2d942.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC-VQ3BWkshMgNgWW9ytXTZTdYPL9k-Xo4"
+          "current_key": "AIzaSyBW5qFqQQwPlJWDCiujUfw5UbzTTVrcSxY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "596956862611-qkiqsbeacqpsti95kddc92iovitlkpnp.apps.googleusercontent.com",
+              "client_id": "362320712964-0s2cjn0hr2g109n8b7c2ejv00da2d942.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
