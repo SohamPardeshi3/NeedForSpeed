@@ -9,13 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".choose_niche"></activity>
+        <activity android:name=".profile"></activity>
+        <activity android:name=".choose_niche" />
         <activity android:name=".buyingScreen" />
         <activity android:name=".sellingScreen" />
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".shoppingScreen" />
+            android:parentActivityName=".buyingScreen" />
         <activity android:name=".introScreen" />
         <activity android:name=".shoppingScreen" />
         <activity android:name=".introScreen3" />
