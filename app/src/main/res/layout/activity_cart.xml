@@ -177,6 +177,7 @@
         android:layout_marginStart="202dp"
         android:layout_marginTop="8dp"
         android:background="#FAFAFA"
+        android:onClick="nextMap"
         android:scaleType="fitXY"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

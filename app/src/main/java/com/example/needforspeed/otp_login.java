@@ -265,6 +265,7 @@ public class otp_login extends AppCompatActivity {
 
         Intent intent8 = new Intent(this, shoppingScreen.class);
         startActivity(intent8);
+        finish();
 
     }
 }

@@ -13,6 +13,8 @@ public class additems extends AppCompatActivity {
 
     EditText itemName, itemRate, itemQuantity;
 
+    String item, quantity, rate;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,9 +31,32 @@ public class additems extends AppCompatActivity {
     public void save(View view){
 
         Toast.makeText(this, "Item successfully added!", Toast.LENGTH_SHORT).show();
-        String item = itemName.getText().toString();
-        String quantity = itemQuantity.getText().toString()+"kg";
-        String rate = itemRate.getText().toString()+"Rs/kg";
+
+        if (!itemName.getText().toString().isEmpty()) {
+            item = itemName.getText().toString();
+        }else {
+
+            Toast.makeText(this, "Please enter name", Toast.LENGTH_SHORT).show();
+            return;
+
+        }
+
+        if (!itemQuantity.getText().toString().isEmpty()) {
+           quantity = itemQuantity.getText().toString() + "kg";
+        }else {
+
+            Toast.makeText(this, "Please Enter Quantity!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (!itemRate.getText().toString().isEmpty()) {
+            rate = itemRate.getText().toString() + "Rs/kg";
+        }else {
+
+            Toast.makeText(this, "Please Enter Rate!", Toast.LENGTH_SHORT).show();
+            return;
+
+        }
 
 
         Intent i = new Intent(this, list.class);

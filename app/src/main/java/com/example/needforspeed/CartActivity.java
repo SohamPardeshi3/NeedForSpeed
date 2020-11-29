@@ -62,4 +62,12 @@ public class CartActivity extends AppCompatActivity {
             finish();
         }
     }
+
+    public void nextMap(View view){
+
+        Intent imap = new Intent(this, MapActivity.class);
+        startActivity(imap);
+
+    }
+
 }
