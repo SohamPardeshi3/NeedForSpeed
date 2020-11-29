@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -53,6 +54,11 @@ public class buyingScreen extends AppCompatActivity {
 
     }
 
+    public void seeds(View view) {
+        Intent seeds = new Intent(this, seedsActivity.class);
+        startActivity(seeds);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,5 +66,8 @@ public class buyingScreen extends AppCompatActivity {
 
         buyingSearchView = findViewById(R.id.buyingSearchView);
         // search code
+
+        buyingSearchView.setIconified(false);
+        buyingSearchView.clearFocus();
     }
 }
