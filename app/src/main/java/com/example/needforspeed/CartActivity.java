@@ -2,9 +2,11 @@ package com.example.needforspeed;
 
 import androidx.annotation.ColorInt;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.browser.trusted.sharing.ShareTarget;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -54,13 +56,28 @@ public class CartActivity extends AppCompatActivity {
     }
 
     public void placeOrder(View view) {
-        if (quanEditText.getText().toString().trim().length() == 0) {           // check whether cart is empty or not
-            Toast.makeText(this, "You have not added any items!", Toast.LENGTH_SHORT).show();
-        } else {
-            Intent order = new Intent(this, placeOrderActivity.class);
-            startActivity(order);
-            finish();
-        }
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Are you Sure?")
+                .setMessage("Do you want to place order?")
+
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if (quanEditText.getText().toString().trim().length() == 0) {           // check whether cart is empty or not
+                            Toast.makeText(CartActivity.this, "You have not added any items!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Intent order = new Intent(CartActivity.this, placeOrderActivity.class);
+                            startActivity(order);
+                            finish();
+                        }
+                    }
+                })
+                .setNegativeButton("No", null)
+
+                .show();
+
     }
 
     public void nextMap(View view){
