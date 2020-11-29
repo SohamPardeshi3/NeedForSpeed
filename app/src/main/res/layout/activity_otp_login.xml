@@ -120,7 +120,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textAlignment="center"
+            android:maxLength="1"/>
 
         <EditText
             android:id="@+id/editText9"
@@ -128,7 +130,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textAlignment="center"
+            android:maxLength="1"/>
 
         <EditText
             android:id="@+id/editText10"
@@ -136,7 +140,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textAlignment="center"
+            android:maxLength="1"/>
 
         <EditText
             android:id="@+id/editText11"
@@ -144,7 +150,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textAlignment="center"
+            android:maxLength="1" />
 
         <EditText
             android:id="@+id/editText12"
@@ -152,7 +160,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textAlignment="center"
+            android:maxLength="1"/>
 
         <EditText
             android:id="@+id/editText13"
@@ -160,7 +170,9 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:ems="10"
-            android:inputType="number" />
+            android:inputType="number"
+            android:textAlignment="center"
+            android:maxLength="1"/>
     </LinearLayout>
 
     <TextView

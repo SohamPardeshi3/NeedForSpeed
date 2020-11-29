@@ -9,11 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".placeOrderActivity"></activity>
-        <activity android:name=".CartActivity" />
-        <activity android:name=".cottonSeedsActivity" />
-        <activity android:name=".emptyCartActivity" />
-        <activity android:name=".seedsActivity" />
+        <activity android:name=".list"></activity>
+        <activity android:name=".additems" />
         <activity android:name=".profile" />
         <activity android:name=".otp_login" />
         <activity android:name=".choose_niche" />
@@ -35,13 +32,6 @@
             </intent-filter>
         </activity>
     </application>
-
-    <supports-screens
-        android:anyDensity="true"
-        android:largeScreens="true"
-        android:normalScreens="true"
-        android:smallScreens="true"
-        android:xlargeScreens="true" />
 
     <uses-permission android:name="android.permission.INTERNET" />
 
