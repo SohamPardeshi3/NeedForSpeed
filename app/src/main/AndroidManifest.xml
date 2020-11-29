@@ -23,9 +23,6 @@
              sign the APK for publishing.
              You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
-        <activity
-            android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
 
         <activity android:name=".MapActivity" />
         <activity android:name=".list" />
@@ -39,7 +36,7 @@
         <activity android:name=".placeOrderActivity" />
         <activity android:name=".CartActivity" />
         <activity android:name=".seedsActivity" />
-        <activity android:name=".emptyCartActivity" />
+        <activity android:name=".emptyCartActivity" /g>
         <activity
             android:name=".SettingsActivity"
             android:label="@string/title_activity_settings"
