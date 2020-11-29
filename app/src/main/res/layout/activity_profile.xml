@@ -54,7 +54,7 @@
         app:srcCompat="@drawable/save" />
 
     <ImageButton
-        android:id="@+id/logoutButton"
+        android:id="@+id/addToCartButton"
         android:layout_width="342dp"
         android:layout_height="55dp"
         android:layout_marginTop="192dp"

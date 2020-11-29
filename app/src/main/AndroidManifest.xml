@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.needforspeed">
 
-<uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,11 +9,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".profile"></activity>
-
-        <activity android:name=".otp_login"></activity>
-
+        <activity android:name=".placeOrderActivity"></activity>
+        <activity android:name=".CartActivity" />
+        <activity android:name=".cottonSeedsActivity" />
+        <activity android:name=".emptyCartActivity" />
+        <activity android:name=".seedsActivity" />
+        <activity android:name=".profile" />
+        <activity android:name=".otp_login" />
         <activity android:name=".choose_niche" />
         <activity android:name=".buyingScreen" />
         <activity android:name=".sellingScreen" />
@@ -34,5 +35,14 @@
             </intent-filter>
         </activity>
     </application>
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:smallScreens="true"
+        android:xlargeScreens="true" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>
