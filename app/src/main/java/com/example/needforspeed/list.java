@@ -43,7 +43,7 @@ public class list extends AppCompatActivity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(list.this, "Quantity "+ quant + " at price: " + rate, Toast.LENGTH_SHORT).show();
+                Toast.makeText(list.this, "Quantity "+ quant + " at price: " + rate, Toast.LENGTH_LONG).show();
             }
         });
 
