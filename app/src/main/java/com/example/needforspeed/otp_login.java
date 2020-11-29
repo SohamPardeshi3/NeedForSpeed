@@ -259,6 +259,10 @@ public class otp_login extends AppCompatActivity {
 
     public void next(View view){
 
+        String n1 = name.getText().toString();
+
+        Toast.makeText(this, n1 +" you've successfully logged in!", Toast.LENGTH_SHORT).show();
+
         Intent intent8 = new Intent(this, shoppingScreen.class);
         startActivity(intent8);
 
