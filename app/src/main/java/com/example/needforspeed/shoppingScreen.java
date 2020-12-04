@@ -5,6 +5,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -33,6 +34,12 @@ public class shoppingScreen extends AppCompatActivity {
 
         switch (item.getItemId())
         {
+            case R.id.profile1:
+                Intent profile = new Intent(this, profile.class);
+                startActivity(profile);
+                finish();
+                return true;
+
             case R.id.update:
                 Toast.makeText(getApplicationContext(), "You're already up to date",Toast.LENGTH_SHORT).show();
                 return true;
@@ -40,11 +47,23 @@ public class shoppingScreen extends AppCompatActivity {
             case R.id.settings:
                 Intent settings = new Intent(this, SettingsActivity.class);
                 startActivity(settings);
+                finish();
             return true;
 
             case R.id.help:
                 Log.i("help", "help clicked");
                 return true;
+
+            case R.id.logout:
+
+                SharedPreferences settings1 = getSharedPreferences("your_preference_name1", 0);
+                SharedPreferences.Editor editor1 = settings1.edit();
+                editor1.putBoolean("LoggedIn1", false);
+                editor1.commit();
+
+                Intent log = new Intent(this, choose_niche.class);
+                startActivity(log);
+                finish();
 
             default:
                 return false;
@@ -59,7 +78,11 @@ public class shoppingScreen extends AppCompatActivity {
         setContentView(R.layout.activity_shopping_screen);
 //        ActionBar actionBar = getSupportActionBar();
 //        actionBar.hide();
-        setTitle("Need For Seed");
+        SharedPreferences naam = getSharedPreferences("Name_id", 0);
+        String name_p = naam.getString("Given_name", null);
+
+
+        setTitle("Welcome, "+ name_p);
     }
 
     public void sellingScreen(View view) {                                  //onClick = sellingScreen
