@@ -27,19 +27,29 @@ public class MainActivity extends AppCompatActivity {
                 /* Create an Intent that will start the Menu-Activity. */
                 Intent mainIntent = new Intent(MainActivity.this, introScreen.class);
                 Intent trueIntent = new Intent(MainActivity.this, choose_niche.class);
+                Intent nextIntent = new Intent(MainActivity.this, shoppingScreen.class);
+
                 SharedPreferences settings = getSharedPreferences("your_preference_name", 0);
                 boolean isLoggedIn = settings.getBoolean("LoggedIn", false);
 
-                if(isLoggedIn )
-                {
-                    //Go directly to Homescreen.
-                    MainActivity.this.startActivity(trueIntent);
-                    MainActivity.this.finish();
-                }else{
+                SharedPreferences settings1 = getSharedPreferences("your_preference_name1", 0);
+                boolean isLoggedIn1 = settings1.getBoolean("LoggedIn1", false);
 
-                    MainActivity.this.startActivity(mainIntent);
+                if (isLoggedIn1){
+                    MainActivity.this.startActivity(nextIntent);
                     MainActivity.this.finish();
+                }else {
 
+                    if (isLoggedIn) {
+                        //Go directly to Homescreen.
+                        MainActivity.this.startActivity(trueIntent);
+                        MainActivity.this.finish();
+                    } else {
+
+                        MainActivity.this.startActivity(mainIntent);
+                        MainActivity.this.finish();
+
+                    }
                 }
 
             }

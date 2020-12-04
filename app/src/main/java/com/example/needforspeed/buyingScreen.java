@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -37,16 +38,29 @@ public class buyingScreen extends AppCompatActivity {
                 Log.i("profile","Profile cliked");
                 Intent profile = new Intent(this, profile.class);
                 startActivity(profile);
+                finish();
                 return true;
 
             case R.id.settings:
                 Intent settings = new Intent(this, SettingsActivity.class);
                 startActivity(settings);
+                finish();
                 return true;
 
             case R.id.help:
                 Log.i("help", "help clicked");
                 return true;
+
+            case R.id.logout1:
+
+                SharedPreferences settings1 = getSharedPreferences("your_preference_name1", 0);
+                SharedPreferences.Editor editor1 = settings1.edit();
+                editor1.putBoolean("LoggedIn1", false);
+                editor1.commit();
+
+                Intent logo = new Intent(this, choose_niche.class);
+                startActivity(logo);
+                finish();
 
             default:
                 return false;
