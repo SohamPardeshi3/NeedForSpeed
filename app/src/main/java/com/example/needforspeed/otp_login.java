@@ -265,6 +265,7 @@ public class otp_login extends AppCompatActivity {
         String n1 = name.getText().toString();
         String n2 = inputMobile.getText().toString();
 
+        /*
         SharedPreferences number = getSharedPreferences("Number_id", 0);
         SharedPreferences.Editor editor3 = number.edit();
         editor3.putString("Given_number", n2);
@@ -275,12 +276,19 @@ public class otp_login extends AppCompatActivity {
         editor4.putString("Given_name1", n2);
         editor4.commit();
 
+         */
+
 
         if (!n1.isEmpty()) {
 
+            SharedPreferences naam = getSharedPreferences("Name_id", 0);
+            SharedPreferences.Editor editor2 = naam.edit();
+            editor2.putString("Given_name", n1);
+            editor2.commit();
+
             Toast.makeText(this, n1 + " you've successfully logged in!", Toast.LENGTH_SHORT).show();
 
-            Intent intent8 = new Intent(this, profile.class);
+            Intent intent8 = new Intent(this, shoppingScreen.class);
             startActivity(intent8);
             finish();
 
