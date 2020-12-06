@@ -270,17 +270,17 @@ public class otp_login extends AppCompatActivity {
         editor3.putString("Given_number", n2);
         editor3.commit();
 
-        SharedPreferences name1 = getSharedPreferences("Name_id1", 0);
-        SharedPreferences.Editor editor4 = name1.edit();
-        editor4.putString("Given_name1", n2);
-        editor4.commit();
+//        SharedPreferences name1 = getSharedPreferences("Name_id1", 0);
+//        SharedPreferences.Editor editor4 = name1.edit();
+//        editor4.putString("Given_name1", n2);
+//        editor4.commit();
 
 
         if (!n1.isEmpty()) {
 
             Toast.makeText(this, n1 + " you've successfully logged in!", Toast.LENGTH_SHORT).show();
 
-            Intent intent8 = new Intent(this, profile.class);
+            Intent intent8 = new Intent(this, shoppingScreen.class);
             startActivity(intent8);
             finish();
 

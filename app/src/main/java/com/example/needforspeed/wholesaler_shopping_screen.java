@@ -11,19 +11,16 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.SearchView;
 import android.widget.Toast;
 
-public class buyingScreen extends AppCompatActivity {
+public class wholesaler_shopping_screen extends AppCompatActivity {
 
-    SearchView buyingSearchView;
-
-    //buying screen menu
+    // wholesaler shopping screen menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.buying_screen_menu, menu);
+        menuInflater.inflate(R.menu.shopping_screen_menu, menu);
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -34,11 +31,14 @@ public class buyingScreen extends AppCompatActivity {
 
         switch (item.getItemId())
         {
-            case R.id.profile:
-                Log.i("profile","Profile cliked");
+            case R.id.profile1:
                 Intent profile = new Intent(this, profile.class);
                 startActivity(profile);
                 finish();
+                return true;
+
+            case R.id.update:
+                Toast.makeText(getApplicationContext(), "You're already up to date",Toast.LENGTH_SHORT).show();
                 return true;
 
             case R.id.settings:
@@ -51,15 +51,15 @@ public class buyingScreen extends AppCompatActivity {
                 Log.i("help", "help clicked");
                 return true;
 
-            case R.id.logout1:
+            case R.id.logout:
 
                 SharedPreferences settings1 = getSharedPreferences("your_preference_name1", 0);
                 SharedPreferences.Editor editor1 = settings1.edit();
                 editor1.putBoolean("LoggedIn1", false);
                 editor1.commit();
 
-                Intent logo = new Intent(this, choose_niche.class);
-                startActivity(logo);
+                Intent log = new Intent(this, choose_niche.class);
+                startActivity(log);
                 finish();
 
             default:
@@ -68,25 +68,14 @@ public class buyingScreen extends AppCompatActivity {
 
     }
 
-    public void seeds(View view) {
-        Intent seeds = new Intent(this, seedsActivity.class);
-        startActivity(seeds);
-    }
-
-    public void buyFertilizers(View view) {
-        Intent buyFertilizers = new Intent(this, farmer_buy_fertilizers.class);
-        startActivity(buyFertilizers);
+    public void sellItems(View view) {
+        Intent sell = new Intent(this, wholesaler_sell_items.class);
+        startActivity(sell);
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_buying_screen);
-
-        buyingSearchView = findViewById(R.id.buyingSearchView);
-        // search code
-
-        buyingSearchView.setIconified(false);
-        buyingSearchView.clearFocus();
+        setContentView(R.layout.activity_wholesaler_shopping_screen);
     }
 }

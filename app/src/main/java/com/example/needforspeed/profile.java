@@ -32,19 +32,19 @@ public class profile extends AppCompatActivity {
         nameEditText = findViewById(R.id.nameEditText);
         numberEditText = findViewById(R.id.numberEditText);
 
-        SharedPreferences name1 = getSharedPreferences("Name_id1", 0);
-        String name_p = name1.getString("Given_number", null);
+//        SharedPreferences name1 = getSharedPreferences("Name_id1", 0);
+//        String name_p = name1.getString("Given_number", null);
 
-        SharedPreferences number = getSharedPreferences("Number_id", 0);
-        String number_p = number.getString("Given_name1", null);
+//        SharedPreferences number = getSharedPreferences("Number_id", 0);
+//        String number_p = number.getString("Given_name1", null);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            nameEditText.autofill(AutofillValue.forText(name_p));
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            nameEditText.autofill(AutofillValue.forText(name_p));
+//        }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            numberEditText.autofill(AutofillValue.forText(number_p));
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+//            numberEditText.autofill(AutofillValue.forText(number_p));
+//        }
 
 
     }
