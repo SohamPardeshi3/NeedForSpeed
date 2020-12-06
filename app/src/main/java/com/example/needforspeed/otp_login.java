@@ -278,10 +278,10 @@ public class otp_login extends AppCompatActivity {
         editor3.putString("Given_number", n2);
         editor3.commit();
 
-        SharedPreferences name1 = getSharedPreferences("Name_id1", 0);
-        SharedPreferences.Editor editor4 = name1.edit();
-        editor4.putString("Given_name1", n2);
-        editor4.commit();
+//        SharedPreferences name1 = getSharedPreferences("Name_id1", 0);
+//        SharedPreferences.Editor editor4 = name1.edit();
+//        editor4.putString("Given_name1", n2);
+//        editor4.commit();
 
          */
 

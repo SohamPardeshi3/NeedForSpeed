@@ -18,6 +18,11 @@ public class choose_niche extends AppCompatActivity {
 
         Intent intent = new Intent(this, otp_login.class);
         startActivity(intent);
+        finish();
+    }
 
+    public void wholesaler(View view) {
+        Intent wholesaler = new Intent(this, wholesaler_otp_login.class);
+        startActivity(wholesaler);
     }
 }
