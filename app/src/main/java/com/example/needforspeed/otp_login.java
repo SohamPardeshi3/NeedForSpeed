@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -27,9 +28,13 @@ import java.util.concurrent.TimeUnit;
 public class otp_login extends AppCompatActivity {
     EditText inputcode1, inputcode2, inputcode3, inputcode4, inputcode5, inputcode6, inputMobile, name;
 
-    String verificationID;
+    String verificationCode, cd;
 
     Button genOtp, verifyOtp, next;
+
+    PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallback;
+
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +52,7 @@ public class otp_login extends AppCompatActivity {
         next = findViewById(R.id.button);
 
         next.setEnabled(false);
+        next.setBackgroundColor(Color.GRAY);
 
         inputcode1 = findViewById(R.id.editText8);
         inputcode2 = findViewById(R.id.editText9);
@@ -55,97 +61,98 @@ public class otp_login extends AppCompatActivity {
         inputcode5 = findViewById(R.id.editText12);
         inputcode6 = findViewById(R.id.editText13);
 
-        genOtp.setOnClickListener(new View.OnClickListener() {
+        auth = FirebaseAuth.getInstance();
+
+        mCallback = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
+
+
             @Override
-            public void onClick(View v) {
-                if (inputMobile.getText().toString().trim().isEmpty()){
-
-                    Toast.makeText(otp_login.this, "Please enter a mobile number!", Toast.LENGTH_SHORT).show();
-                    return;
-
-                }
-
-                PhoneAuthProvider.getInstance().verifyPhoneNumber( "+91"+inputMobile.getText().toString(),
-                        60,
-                        TimeUnit.SECONDS,
-                        otp_login.this,
-                        new PhoneAuthProvider.OnVerificationStateChangedCallbacks(){
-
-
-                            @Override
-                            public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
-
-                            }
-
-                            @Override
-                            public void onVerificationFailed(@NonNull FirebaseException e) {
-                                Toast.makeText(otp_login.this, e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-
-                            @Override
-                            public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
-                                verificationID = s;
-                                //super.onCodeSent(s, forceResendingToken);
-                            }
-                        });
+            public void onVerificationCompleted(@NonNull PhoneAuthCredential phoneAuthCredential) {
 
             }
-        });
+
+            @Override
+            public void onVerificationFailed(@NonNull FirebaseException e) {
+
+            }
+
+            @Override
+            public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+                super.onCodeSent(s, forceResendingToken);
+
+                verificationCode = s;
+                Toast.makeText(otp_login.this, "Code Sent to the number!", Toast.LENGTH_SHORT).show();
+            }
+        };
 
         setUpotp();
 
-        verifyOtp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+    }
 
-                if (inputcode1.getText().toString().trim().isEmpty()
-                        || inputcode2.getText().toString().trim().isEmpty()
-                        || inputcode3.getText().toString().trim().isEmpty()
-                        || inputcode4.getText().toString().trim().isEmpty()
-                        || inputcode5.getText().toString().trim().isEmpty()
-                        || inputcode6.getText().toString().trim().isEmpty()
-                ){
-                    Toast.makeText(otp_login.this, "Please Enter Valid Otp", Toast.LENGTH_SHORT).show();
-                    return;
+    public void sms(View view){
+
+    String numb = inputMobile.getText().toString();
+    PhoneAuthProvider.getInstance().verifyPhoneNumber(
+       "+91"+numb,60,TimeUnit.SECONDS,this,mCallback
+    );
+
+    }
+
+    public void signIn(PhoneAuthCredential credential){
+
+    auth.signInWithCredential(credential)
+            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (task.isSuccessful()){
+
+                        Toast.makeText(otp_login.this, "Correct Otp", Toast.LENGTH_SHORT).show();
+
+                    }else {
+                        Toast.makeText(otp_login.this, "Wrong Otp, please enter correct otp!", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
-                String code = inputcode1.getText().toString() +
-                        inputcode2.getText().toString() +
-                        inputcode3.getText().toString() +
-                        inputcode4.getText().toString() +
-                        inputcode5.getText().toString() +
-                        inputcode6.getText().toString() ;
 
-                if (verificationID != null){
+            });
 
-                    PhoneAuthCredential phoneAuthCredential = PhoneAuthProvider.getCredential(
-                            verificationID,
-                            code
-                    );
-
-                    FirebaseAuth.getInstance().signInWithCredential(phoneAuthCredential)
-                            .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                                @Override
-                                public void onComplete(@NonNull Task<AuthResult> task) {
-                                    if (task.isComplete()){
-
-                                        Toast.makeText(otp_login.this, "Correct Otp", Toast.LENGTH_SHORT).show();
-
-                                    }else {
-
-                                        Toast.makeText(otp_login.this, "Otp is wrong", Toast.LENGTH_SHORT).show();
-
-                                    }
-                                }
-                            });
-
-                }
-
-                next.setEnabled(true);
+    }
 
 
-            }
-        });
+    public void veri(View view){
+
+        if (inputcode1.getText().toString().trim().isEmpty()
+                || inputcode2.getText().toString().trim().isEmpty()
+                || inputcode3.getText().toString().trim().isEmpty()
+                || inputcode4.getText().toString().trim().isEmpty()
+                || inputcode5.getText().toString().trim().isEmpty()
+                || inputcode6.getText().toString().trim().isEmpty()
+        ){
+            Toast.makeText(otp_login.this, "Please Enter Valid Otp", Toast.LENGTH_SHORT).show();
+            return;
+        }else {
+
+
+            cd = inputcode1.getText().toString() +
+                    inputcode2.getText().toString() +
+                    inputcode3.getText().toString() +
+                    inputcode4.getText().toString() +
+                    inputcode5.getText().toString() +
+                    inputcode6.getText().toString() ;
+        }
+
+
+        verifyphonenumber(verificationCode, cd);
+
+        next.setBackgroundColor(248528);
+        next.setEnabled(true);
+
+    }
+
+    public void verifyphonenumber(String verification_code, String input_code){
+
+        PhoneAuthCredential credential = PhoneAuthProvider.getCredential(verification_code, input_code);
+        signIn(credential);
 
     }
 
@@ -263,7 +270,7 @@ public class otp_login extends AppCompatActivity {
 
 
         String n1 = name.getText().toString();
-        String n2 = inputMobile.getText().toString();
+       // String n2 = inputMobile.getText().toString();
 
         /*
         SharedPreferences number = getSharedPreferences("Number_id", 0);
