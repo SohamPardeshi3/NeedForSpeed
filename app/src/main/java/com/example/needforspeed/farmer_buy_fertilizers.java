@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
@@ -31,7 +32,10 @@ public class farmer_buy_fertilizers extends AppCompatActivity {
     FirebaseUser user;
     DatabaseReference databaseReference;
     String uid;
+    ArrayList<String> fert = new ArrayList<>();
+    FirebaseDatabase database;
 
+    //olalala
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,32 +43,41 @@ public class farmer_buy_fertilizers extends AppCompatActivity {
 
         fertilizersListView = findViewById(R.id.listView);
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, fertilizers);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, fert);
         fertilizersListView.setAdapter(arrayAdapter);
 
         mAuth = FirebaseAuth.getInstance();
         user = mAuth.getCurrentUser();
         uid = user.getUid();
 
-        // getting results with uid
-//        databaseReference = FirebaseDatabase.getInstance().getReference().child("wholesaler");
-//        databaseReference.addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot snapshot) {
-//                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-//
-//                    String value = String.valueOf(dataSnapshot.child("fertilizers").getValue());
-//                    Log.i("Value", value);
-//
-//                }
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) {
-//
-//            }
-//        });
+        FirebaseDatabase.getInstance().getReference().child("wholesaler").child(mAuth.getCurrentUser().getUid()).child("fertilizers").addValueEventListener(new ValueEventListener() {
 
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    fert.add(dataSnapshot.child("value").getValue().toString());
+                    arrayAdapter.notifyDataSetChanged();
+                }
+//                Query query = databaseReference.orderByChild("value");
+//                query.addValueEventListener(new ValueEventListener() {
+//                    @Override
+//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+//
+//                        }
+//
+//
+//                    @Override
+//                    public void onCancelled(@NonNull DatabaseError error) {
+//
+//                    }
+//                });
+            }
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
 
 
             // Also getting results with uid
