@@ -52,7 +52,6 @@ public class otp_login extends AppCompatActivity {
         next = findViewById(R.id.button);
 
         next.setEnabled(false);
-        next.setBackgroundColor(Color.GRAY);
 
         inputcode1 = findViewById(R.id.editText8);
         inputcode2 = findViewById(R.id.editText9);
@@ -144,7 +143,7 @@ public class otp_login extends AppCompatActivity {
 
         verifyphonenumber(verificationCode, cd);
 
-        next.setBackgroundColor(248528);
+
         next.setEnabled(true);
 
     }

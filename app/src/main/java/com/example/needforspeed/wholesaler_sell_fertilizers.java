@@ -59,7 +59,7 @@ public class wholesaler_sell_fertilizers extends AppCompatActivity {
             public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                 if(error == null) {
                     // storing the added items in the database by generating uid
-                    FirebaseDatabase.getInstance().getReference().child("wholesaler").child(uid).child("fertilizers").child(ref.push().getKey()).setValue(value);
+                    FirebaseDatabase.getInstance().getReference().child("wholesaler").child(uid).child("fertilizers").child(ref.push().getKey()).child("value").setValue(value);
                 } else {
 
                     Toast.makeText(wholesaler_sell_fertilizers.this, error.getDetails(), Toast.LENGTH_SHORT).show();
