@@ -132,6 +132,9 @@ public class otp_login extends AppCompatActivity {
             return;
         }else {
 
+            next.setBackgroundColor(Color.GREEN);
+            next.setEnabled(true);
+
 
             cd = inputcode1.getText().toString() +
                     inputcode2.getText().toString() +
@@ -144,8 +147,7 @@ public class otp_login extends AppCompatActivity {
 
         verifyphonenumber(verificationCode, cd);
 
-        next.setBackgroundColor(248528);
-        next.setEnabled(true);
+
 
     }
 
@@ -163,7 +165,11 @@ public class otp_login extends AppCompatActivity {
         inputcode1.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if (!s.toString().trim().isEmpty()){
 
+                    inputcode2.requestFocus();
+
+                }
             }
 
             @Override
@@ -177,13 +183,21 @@ public class otp_login extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
+                if (!s.toString().trim().isEmpty()){
 
+                    inputcode2.requestFocus();
+
+                }
             }
         });
         inputcode2.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if (!s.toString().trim().isEmpty()){
 
+                    inputcode3.requestFocus();
+
+                }
             }
 
             @Override
@@ -197,13 +211,21 @@ public class otp_login extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
+                if (!s.toString().trim().isEmpty()){
 
+                    inputcode3.requestFocus();
+
+                }
             }
         });
         inputcode3.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if (!s.toString().trim().isEmpty()){
 
+                    inputcode4.requestFocus();
+
+                }
             }
 
             @Override
@@ -217,13 +239,21 @@ public class otp_login extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
+                if (!s.toString().trim().isEmpty()){
 
+                    inputcode4.requestFocus();
+
+                }
             }
         });
         inputcode4.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if (!s.toString().trim().isEmpty()){
 
+                    inputcode5.requestFocus();
+
+                }
             }
 
             @Override
@@ -237,13 +267,21 @@ public class otp_login extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
+                if (!s.toString().trim().isEmpty()){
 
+                    inputcode5.requestFocus();
+
+                }
             }
         });
         inputcode5.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                if (!s.toString().trim().isEmpty()){
 
+                    inputcode6.requestFocus();
+
+                }
             }
 
             @Override
@@ -257,9 +295,119 @@ public class otp_login extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable s) {
+                if (!s.toString().trim().isEmpty()){
+
+                    inputcode6.requestFocus();
+
+                }
+            }
+        });
+
+        inputcode6.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().trim().isEmpty()){
+
+                    inputcode5.requestFocus();
+
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
 
             }
         });
+
+        inputcode5.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().trim().isEmpty()){
+
+                    inputcode4.requestFocus();
+
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        inputcode4.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().trim().isEmpty()){
+
+                    inputcode3.requestFocus();
+
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        inputcode3.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().trim().isEmpty()){
+
+                    inputcode2.requestFocus();
+
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+        inputcode2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().trim().isEmpty()){
+
+                    inputcode1.requestFocus();
+
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
 
     }
 
@@ -287,6 +435,11 @@ public class otp_login extends AppCompatActivity {
 
 
         if (!n1.isEmpty()) {
+
+            SharedPreferences settings1 = getSharedPreferences("your_preference_name1", 0);
+            SharedPreferences.Editor editor1 = settings1.edit();
+            editor1.putBoolean("LoggedIn1", true);
+            editor1.commit();
 
             SharedPreferences naam = getSharedPreferences("Name_id", 0);
             SharedPreferences.Editor editor2 = naam.edit();

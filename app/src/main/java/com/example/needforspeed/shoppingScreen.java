@@ -14,6 +14,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 import java.net.Inet4Address;
 
 public class shoppingScreen extends AppCompatActivity {
@@ -37,7 +39,7 @@ public class shoppingScreen extends AppCompatActivity {
             case R.id.profile1:
                 Intent profile = new Intent(this, profile.class);
                 startActivity(profile);
-                finish();
+
                 return true;
 
             case R.id.update:
@@ -47,7 +49,7 @@ public class shoppingScreen extends AppCompatActivity {
             case R.id.settings:
                 Intent settings = new Intent(this, SettingsActivity.class);
                 startActivity(settings);
-                finish();
+
             return true;
 
             case R.id.help:
@@ -60,6 +62,8 @@ public class shoppingScreen extends AppCompatActivity {
                 SharedPreferences.Editor editor1 = settings1.edit();
                 editor1.putBoolean("LoggedIn1", false);
                 editor1.commit();
+
+                FirebaseAuth.getInstance().signOut();
 
                 Intent log = new Intent(this, choose_niche.class);
                 startActivity(log);

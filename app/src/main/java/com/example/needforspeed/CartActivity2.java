@@ -1,22 +1,22 @@
 package com.example.needforspeed;
 
-import androidx.annotation.ColorInt;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.browser.trusted.sharing.ShareTarget;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.autofill.AutofillValue;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class CartActivity extends AppCompatActivity {
+public class CartActivity2 extends AppCompatActivity {
 
     EditText quanEditText;
     EditText amountEditText;
@@ -28,7 +28,7 @@ public class CartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cart);
+        setContentView(R.layout.activity_cart2);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -37,7 +37,7 @@ public class CartActivity extends AppCompatActivity {
         rateEditText = findViewById(R.id.rateEditText);
         totalEditText = findViewById(R.id.totalAmountEditText);
         quanEditText = findViewById(R.id.quanEditText);
-        addressEditText = findViewById(R.id.addressEditText);
+       // addressEditText = findViewById(R.id.addressEditText);
 
         rateEditText.setText("30rs / kg");
 
@@ -63,12 +63,23 @@ public class CartActivity extends AppCompatActivity {
         SharedPreferences Addname = getSharedPreferences("Address_id", 0);
         String Address_p = Addname.getString("Given_address", null);
 
-        addressEditText.setText(Address_p);
+        TextView textView = findViewById(R.id.textView8);
+
+        textView.setText(Address_p);
+
+        //Intent saveIntent = getIntent();
+        //savedAdd = saveIntent.getExtras().getString("MapAdd");
+
+        //Log.i("Adress of helloji", savedAdd);
+
+        //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+          //addressEditText.autofill(AutofillValue.forText(savedAdd));
+        //}
     }
 
     public void placeOrder(View view) {
 
-        if (!addressEditText.getText().toString().isEmpty()) {
+       // if (!addressEditText.getText().toString().isEmpty()) {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -79,20 +90,20 @@ public class CartActivity extends AppCompatActivity {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             if (quanEditText.getText().toString().trim().length() == 0) {           // check whether cart is empty or not
-                                Toast.makeText(CartActivity.this, "You have not added any items!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(CartActivity2.this, "You have not added any items!", Toast.LENGTH_SHORT).show();
                             } else {
-                                Intent order = new Intent(CartActivity.this, placeOrderActivity.class);
+                                Intent order = new Intent(CartActivity2.this, placeOrderActivity.class);
                                 startActivity(order);
-
+                                finish();
                             }
                         }
                     })
                     .setNegativeButton("No", null)
 
                     .show();
-        }else {
-            Toast.makeText(this, "Address not given!", Toast.LENGTH_SHORT).show();
-        }
+       // }else {
+           // Toast.makeText(this, "Address not given!", Toast.LENGTH_SHORT).show();
+      //  }
 
     }
 
@@ -100,13 +111,6 @@ public class CartActivity extends AppCompatActivity {
 
         Intent imap = new Intent(this, MapActivity.class);
         startActivity(imap);
-
-    }
-
-    public void Reload(View view){
-
-       finish();
-       startActivity(getIntent());
 
     }
 
