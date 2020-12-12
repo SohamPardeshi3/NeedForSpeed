@@ -6,53 +6,187 @@
     android:layout_height="match_parent"
     tools:context=".wholesaler_sell_items">
 
-    <Button
-        android:id="@+id/sellFertilizersButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:onClick="sellFertilizers"
-        android:text="Add Fertilizers"
+    <EditText
+        android:id="@+id/addQuantityEditText"
+        android:layout_width="293dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/recedittext"
+        android:ems="10"
+        android:inputType="number"
+        android:paddingLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <EditText
+        android:id="@+id/addDescEditText"
+        android:layout_width="293dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/recedittext"
+        android:ems="10"
+        android:inputType="textLongMessage|text"
+        android:paddingLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.533"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="166dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="225dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="20dp"
+        android:text="3. Item Quantity:"
+        android:textColor="#4CAF50"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addAmountEditText" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="287dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="79dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:text="4. Item Description:"
+        android:textColor="#4CAF50"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/addQuantityEditText" />
 
-    <EditText
-        android:id="@+id/nameEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="  add name"
-        android:inputType="textPersonName"
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="166dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="225dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="20dp"
+        android:text="2. Item Rate:"
+        android:textColor="#4CAF50"
+        android:textSize="22sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/itemNameEditText" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="166dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="225dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="20dp"
+        android:text="1. Item Name:"
+        android:textColor="#4CAF50"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="404dp"
+        android:layout_height="79dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/nfs" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="169dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="225dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="16dp"
+        android:text="Add Items:"
+        android:textColor="#4CAF50"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
 
     <EditText
-        android:id="@+id/addQuantityEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="88dp"
+        android:id="@+id/itemNameEditText"
+        android:layout_width="298dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/recedittext"
         android:ems="10"
-        android:hint="  add quantity"
         android:inputType="textPersonName"
+        android:paddingLeft="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <EditText
         android:id="@+id/addAmountEditText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="160dp"
+        android:layout_width="293dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/recedittext"
         android:ems="10"
-        android:hint="  add amount"
-        android:inputType="textPersonName"
+        android:inputType="number"
+        android:paddingLeft="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <ImageButton
+        android:id="@+id/sellFertilizers"
+        android:layout_width="165dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="136dp"
+        android:background="#FAFAFA"
+        android:onClick="sellFertilizers"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/discard"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addQuantityEditText"
+        app:srcCompat="@drawable/proceed" />
+
+    <ImageButton
+        android:id="@+id/discard"
+        android:layout_width="165dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="136dp"
+        android:background="#FAFAFA"
+        android:onClick="discard"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sellFertilizers"
+        app:layout_constraintTop_toBottomOf="@+id/addQuantityEditText"
+        app:srcCompat="@drawable/discard" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

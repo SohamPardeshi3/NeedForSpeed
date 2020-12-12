@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".wholesaler_sell_by_category">
+
+    <ImageButton
+        android:id="@+id/wholesalerSellSeedsButton"
+        android:layout_width="330dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="32dp"
+        android:background="#FAFAFA"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/wholesalerSellFertButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:srcCompat="@drawable/sellseeds" />
+
+    <ImageButton
+        android:id="@+id/wholesalerSellFertButton"
+        android:layout_width="330dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="32dp"
+        android:background="#FAFAFA"
+        android:onClick="sellFert"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/wholesalerSellEquipButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wholesalerSellSeedsButton"
+        app:srcCompat="@drawable/sellfert" />
+
+    <ImageButton
+        android:id="@+id/wholesalerSellEquipButton"
+        android:layout_width="350dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="55dp"
+        android:layout_marginTop="32dp"
+        android:background="#FAFAFA"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/wholesalerSellFertButton"
+        app:srcCompat="@drawable/sellequip" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="246dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="149dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:srcCompat="@drawable/selectsellcat" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginEnd="71dp"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="20dp"
+        android:contentDescription="TODO"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/nfs" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

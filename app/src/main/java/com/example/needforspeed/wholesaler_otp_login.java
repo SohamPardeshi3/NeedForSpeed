@@ -131,7 +131,7 @@ public class wholesaler_otp_login extends AppCompatActivity {
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isComplete()){
                                         // add user to database
-                                        FirebaseDatabase.getInstance().getReference().child("wholesaler").child(task.getResult().getUser().getUid()).child("phonenumber").setValue(inputMobile.getText().toString());
+                                        FirebaseDatabase.getInstance().getReference().child("wholesaler").child(task.getResult().getUser().getUid()).child("name").setValue(name.getText().toString());
                                         Toast.makeText(wholesaler_otp_login.this, "Correct Otp", Toast.LENGTH_SHORT).show();
 
                                     }else {

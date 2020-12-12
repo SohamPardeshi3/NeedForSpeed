@@ -23,9 +23,9 @@ public class additems extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        itemName = findViewById(R.id.editText2);
-        itemRate = findViewById(R.id.editText4);
-        itemQuantity = findViewById(R.id.editText5);
+        itemName = findViewById(R.id.itemNameEditText);
+        itemRate = findViewById(R.id.addAmountEditText);
+        itemQuantity = findViewById(R.id.addQuantityEditText);
     }
 
     public void save(View view){
