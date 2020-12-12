@@ -2,10 +2,14 @@ package com.example.needforspeed;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -27,77 +31,60 @@ import java.util.List;
 public class farmer_buy_fertilizers extends AppCompatActivity {
 
     ListView fertilizersListView;
-    ArrayList<String> fertilizers = new ArrayList<>();
+    ArrayList<String> users = new ArrayList<>();
     FirebaseAuth mAuth;
-    FirebaseUser user;
-    DatabaseReference databaseReference;
-    String uid;
-    ArrayList<String> fert = new ArrayList<>();
-    FirebaseDatabase database;
+    ArrayList<DataSnapshot> info = new ArrayList<>();
 
-    //olalala
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_farmer_buy_fertilizers);
 
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.hide();
+
         fertilizersListView = findViewById(R.id.listView);
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, fert);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, users);
         fertilizersListView.setAdapter(arrayAdapter);
 
         mAuth = FirebaseAuth.getInstance();
-        user = mAuth.getCurrentUser();
-        uid = user.getUid();
 
-        FirebaseDatabase.getInstance().getReference().child("wholesaler").child(mAuth.getCurrentUser().getUid()).child("fertilizers").addValueEventListener(new ValueEventListener() {
-
+        FirebaseDatabase.getInstance().getReference().child("wholesaler").child(mAuth.getCurrentUser().getUid()).child("fertilizers").addChildEventListener(new ChildEventListener() {
             @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-
-                for(DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    fert.add(dataSnapshot.child("value").getValue().toString());
-                    arrayAdapter.notifyDataSetChanged();
-                }
-//                Query query = databaseReference.orderByChild("value");
-//                query.addValueEventListener(new ValueEventListener() {
-//                    @Override
-//                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-//
-//                        }
-//
-//
-//                    @Override
-//                    public void onCancelled(@NonNull DatabaseError error) {
-//
-//                    }
-//                });
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                users.add(snapshot.child("type").getValue().toString());
+                info.add(snapshot);
+                arrayAdapter.notifyDataSetChanged();
             }
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
 
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {}
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
+        });
+
+        fertilizersListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                DataSnapshot snapshot = info.get(position);
+
+                Intent intent = new Intent(farmer_buy_fertilizers.this, ViewFertilizers.class);
+
+                intent.putExtra("from", snapshot.child("from").getValue().toString());
+                intent.putExtra("type", snapshot.child("type").getValue().toString());
+                intent.putExtra("rate", snapshot.child("rate").getValue().toString());
+                intent.putExtra("quantity", snapshot.child("quantity").getValue().toString());
+                intent.putExtra("description", snapshot.child("description").getValue().toString());
+                intent.putExtra("key", snapshot.getKey());
+
+                startActivity(intent);
             }
         });
 
-
-            // Also getting results with uid
-//        FirebaseDatabase.getInstance().getReference().child("wholesaler").addChildEventListener(new ChildEventListener() {
-//            @Override
-//            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-//
-//                String fertilizer = snapshot.child("fertilizers").getValue().toString();
-//                fertilizers.add(fertilizer);
-//                arrayAdapter.notifyDataSetChanged();
-//            }
-//
-//            @Override
-//            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
-//            @Override
-//            public void onChildRemoved(@NonNull DataSnapshot snapshot) { }
-//            @Override
-//            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) { }
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError error) { }
-//        });
     }
 }
