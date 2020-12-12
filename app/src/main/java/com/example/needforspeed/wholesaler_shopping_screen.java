@@ -73,7 +73,7 @@ public class wholesaler_shopping_screen extends AppCompatActivity {
     }
 
     public void sellItems(View view) {
-        Intent sell = new Intent(this, wholesaler_sell_items.class);
+        Intent sell = new Intent(this, wholesaler_sell_by_category.class);
         startActivity(sell);
     }
 

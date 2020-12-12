@@ -32,7 +32,7 @@ public class profile extends AppCompatActivity {
         nameEditText = findViewById(R.id.nameEditText);
         numberEditText = findViewById(R.id.numberEditText);
 
-     // master
+      master
 //        SharedPreferences name1 = getSharedPreferences("Name_id1", 0);
 //        String name_p = name1.getString("Given_number", null);
 
@@ -60,7 +60,7 @@ public class profile extends AppCompatActivity {
         //if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
            // numberEditText.autofill(AutofillValue.forText(number_p));
        // }
- //master
+ master
 
 
     }
