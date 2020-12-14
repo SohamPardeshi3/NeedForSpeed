@@ -50,7 +50,7 @@ public class farmer_buy_fertilizers extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        FirebaseDatabase.getInstance().getReference().child("wholesaler").child(mAuth.getCurrentUser().getUid()).child("fertilizers").addChildEventListener(new ChildEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("farmer").child(mAuth.getCurrentUser().getUid()).child("fertilizers").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 users.add(snapshot.child("type").getValue().toString());

@@ -45,7 +45,7 @@ public class ChooseUserActivity extends AppCompatActivity {
         chooseUserListView.setItemChecked(2, true);
         chooseUserListView.setAdapter(adapter);
 
-        FirebaseDatabase.getInstance().getReference().child("wholesaler").addChildEventListener(new ChildEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("farmer").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 String user = snapshot.child("name").getValue().toString();
@@ -74,7 +74,7 @@ public class ChooseUserActivity extends AppCompatActivity {
                 fertMap.put("quantity", getIntent().getStringExtra("Quantity"));
                 fertMap.put("description", getIntent().getStringExtra("Description"));
 
-                FirebaseDatabase.getInstance().getReference().child("wholesaler").child(keys.get(position)).child("fertilizers").push().setValue(fertMap);          // item gets add to the database when a user is selected
+                FirebaseDatabase.getInstance().getReference().child("farmer").child(keys.get(position)).child("fertilizers").push().setValue(fertMap);          // item gets add to the database when a user is selected
 
                 // add a disclaimer here
 

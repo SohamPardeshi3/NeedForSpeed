@@ -22,6 +22,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.concurrent.TimeUnit;
 
@@ -104,7 +105,8 @@ public class otp_login extends AppCompatActivity {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if (task.isSuccessful()){
-
+                        // add farmer to database
+                        FirebaseDatabase.getInstance().getReference().child("farmer").child(task.getResult().getUser().getUid()).child("name").setValue(name.getText().toString());
                         Toast.makeText(otp_login.this, "Correct Otp", Toast.LENGTH_SHORT).show();
 
                     }else {

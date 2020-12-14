@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -33,7 +32,7 @@ public class wholesaler_sell_items extends AppCompatActivity {
 
     public void sellFertilizers(View view) {
 
-        if(addQuantityEditText.getText().toString().trim().length() == 0 && addAmountEditText.getText().toString().trim().length() == 0) {
+        if(itemNameEditText.getText().toString().trim().length() == 0 && addQuantityEditText.getText().toString().trim().length() == 0 && addAmountEditText.getText().toString().trim().length() == 0) {
 
             Toast.makeText(this, "Please enter the quantity and amount of the item", Toast.LENGTH_SHORT).show();
 
@@ -45,9 +44,13 @@ public class wholesaler_sell_items extends AppCompatActivity {
 
             Toast.makeText(this, "Please enter the amount!", Toast.LENGTH_SHORT).show();
 
-        }  else if(addDescEditText.getText().toString().trim().length() == 0) {
+        } else if(addDescEditText.getText().toString().trim().length() == 0) {
 
             Toast.makeText(this, "Please enter a short description about the item", Toast.LENGTH_SHORT).show();
+
+        } else if(itemNameEditText.getText().toString().trim().length() == 0) {
+
+            Toast.makeText(this, "Please enter name of the item", Toast.LENGTH_SHORT).show();
 
         } else {
 

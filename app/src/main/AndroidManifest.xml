@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".wholesaler_sell_by_category"></activity>
+        <activity android:name=".ChooseUserActivity_seeds"></activity>
+        <activity android:name=".wholesaler_sell_seeds" />
+        <activity android:name=".wholesaler_sell_by_category" />
         <activity android:name=".ViewFertilizers" />
         <activity android:name=".ChooseUserActivity" />
         <activity android:name=".farmer_buy_fertilizers" />
@@ -58,10 +60,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
     </application>
-    <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
 
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
