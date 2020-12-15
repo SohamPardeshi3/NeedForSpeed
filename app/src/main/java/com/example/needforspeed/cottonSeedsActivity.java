@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+    // delete this activity later
 public class cottonSeedsActivity extends AppCompatActivity {
 
     EditText quantityEditText;

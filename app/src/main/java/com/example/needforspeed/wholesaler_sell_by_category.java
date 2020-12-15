@@ -19,7 +19,13 @@ public class wholesaler_sell_by_category extends AppCompatActivity {
     }
 
     public void sellFert(View view) {
-        Intent sellFert = new Intent(this, wholesaler_sell_items.class);
+        Intent sellFert = new Intent(this, wholesaler_sell_items.class);              // wholesaler sell fertilizers
         startActivity(sellFert);
     }
+
+    public void sellSeeds(View view) {
+        Intent sellSeed = new Intent(this, wholesaler_sell_seeds.class);              // wholesaler sell seeds
+        startActivity(sellSeed);
+    }
+
 }

@@ -7,54 +7,46 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
-import com.google.firebase.FirebaseError;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class farmer_buy_fertilizers extends AppCompatActivity {
+public class farmer_buy_seeds extends AppCompatActivity {
 
-    ListView fertilizersListView;
-    ArrayList<String> users = new ArrayList<>();
+    ListView seedsListView;
+    ArrayList<String> seedsUsers = new ArrayList<>();
     FirebaseAuth mAuth;
-    ArrayList<DataSnapshot> info = new ArrayList<>();
+    ArrayList<DataSnapshot> seedInfo = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_farmer_buy_fertilizers);
+        setContentView(R.layout.activity_farmer_buy_seeds);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        fertilizersListView = findViewById(R.id.listView);
+        seedsListView = findViewById(R.id.seedsListView);
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, users);
-        fertilizersListView.setAdapter(arrayAdapter);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, seedsUsers);
+        seedsListView.setAdapter(arrayAdapter);
 
         mAuth = FirebaseAuth.getInstance();
 
-        FirebaseDatabase.getInstance().getReference().child("farmer").child(mAuth.getCurrentUser().getUid()).child("fertilizers").addChildEventListener(new ChildEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("farmer").child(mAuth.getCurrentUser().getUid()).child("seeds").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                users.add(snapshot.child("type").getValue().toString());
-                info.add(snapshot);
+                seedsUsers.add(snapshot.child("type").getValue().toString());
+                seedInfo.add(snapshot);
                 arrayAdapter.notifyDataSetChanged();
             }
 
@@ -68,12 +60,12 @@ public class farmer_buy_fertilizers extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) { }
         });
 
-        fertilizersListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        seedsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                DataSnapshot snapshot = info.get(position);
+                DataSnapshot snapshot = seedInfo.get(position);
 
-                Intent intent = new Intent(farmer_buy_fertilizers.this, ViewFertilizers.class);
+                Intent intent = new Intent(farmer_buy_seeds.this, ViewSeeds.class);
 
                 intent.putExtra("from", snapshot.child("from").getValue().toString());
                 intent.putExtra("type", snapshot.child("type").getValue().toString());
@@ -85,6 +77,5 @@ public class farmer_buy_fertilizers extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 }
