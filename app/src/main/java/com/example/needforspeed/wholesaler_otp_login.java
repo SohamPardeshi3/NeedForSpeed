@@ -130,6 +130,7 @@ public class wholesaler_otp_login extends AppCompatActivity {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
                                     if (task.isComplete()){
+
                                         // add wholesaler to database
                                         FirebaseDatabase.getInstance().getReference().child("wholesaler").child(task.getResult().getUser().getUid()).child("name").setValue(name.getText().toString());
                                         Toast.makeText(wholesaler_otp_login.this, "Correct Otp", Toast.LENGTH_SHORT).show();
