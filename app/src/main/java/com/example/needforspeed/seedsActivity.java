@@ -10,7 +10,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.SearchView;
 
 public class seedsActivity extends AppCompatActivity {
-
+    // Delete this activity later
     SearchView buyingSearchView;
 
     @Override

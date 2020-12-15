@@ -35,7 +35,7 @@ public class buyingScreen extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.profile:
-                Log.i("profile","Profile cliked");
+                Log.i("profile","Profile clicked");
                 Intent profile = new Intent(this, profile.class);
                 startActivity(profile);
                 finish();
@@ -69,7 +69,7 @@ public class buyingScreen extends AppCompatActivity {
     }
 
     public void seeds(View view) {
-        Intent seeds = new Intent(this, seedsActivity.class);
+        Intent seeds = new Intent(this, farmer_buy_seeds.class);
         startActivity(seeds);
     }
 

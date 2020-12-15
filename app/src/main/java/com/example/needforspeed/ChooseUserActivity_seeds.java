@@ -41,7 +41,7 @@ public class ChooseUserActivity_seeds extends AppCompatActivity {
         seedsUserListView.setItemChecked(2, true);
         seedsUserListView.setAdapter(seedsArrayAdapter);
 
-        FirebaseDatabase.getInstance().getReference().child("wholesaler").addChildEventListener(new ChildEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("farmer").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 String user = snapshot.child("name").getValue().toString();
@@ -69,7 +69,7 @@ public class ChooseUserActivity_seeds extends AppCompatActivity {
                 seedMap.put("quantity", getIntent().getStringExtra("Quantity"));
                 seedMap.put("description", getIntent().getStringExtra("Description"));
 
-                FirebaseDatabase.getInstance().getReference().child("wholesaler").child(seedKeys.get(position)).child("seeds").push().setValue(seedMap);          // item gets add to the database when a user is selected
+                FirebaseDatabase.getInstance().getReference().child("farmer").child(seedKeys.get(position)).child("seeds").push().setValue(seedMap);          // item gets add to the database when a user is selected
 
                 // add a disclaimer here
             }
