@@ -88,6 +88,7 @@ public class wholesaler_otp_login extends AppCompatActivity {
                             public void onCodeSent(@NonNull String s, @NonNull PhoneAuthProvider.ForceResendingToken forceResendingToken) {
                                 verificationID = s;
                                 //super.onCodeSent(s, forceResendingToken);
+                                Toast.makeText(wholesaler_otp_login.this, "Code Sent to the number!", Toast.LENGTH_SHORT).show();
                             }
                         });
 
@@ -258,6 +259,108 @@ public class wholesaler_otp_login extends AppCompatActivity {
             }
         });
 
+        inputcode6.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().trim().isEmpty()){
+
+                    inputcode5.requestFocus();
+
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        inputcode5.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().trim().isEmpty()){
+
+                    inputcode4.requestFocus();
+
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        inputcode4.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().trim().isEmpty()){
+
+                    inputcode3.requestFocus();
+
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        inputcode3.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().trim().isEmpty()){
+
+                    inputcode2.requestFocus();
+
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+        inputcode2.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (s.toString().trim().isEmpty()){
+
+                    inputcode1.requestFocus();
+
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        });
+
+
     }
 
 
@@ -265,20 +368,26 @@ public class wholesaler_otp_login extends AppCompatActivity {
     public void next(View view){
 
         String n1 = name.getText().toString();
-        String n2 = inputMobile.getText().toString();
+       // String n2 = inputMobile.getText().toString();
 
-        SharedPreferences number = getSharedPreferences("Number_id", 0);
-        SharedPreferences.Editor editor3 = number.edit();
-        editor3.putString("Given_number", n2);
-        editor3.commit();
+       /// SharedPreferences number = getSharedPreferences("Number_id", 0);
+        //SharedPreferences.Editor editor3 = number.edit();
+      //  editor3.putString("Given_number", n2);
+      //  editor3.commit();
 
-//        SharedPreferences name1 = getSharedPreferences("Name_id1", 0);
-//        SharedPreferences.Editor editor4 = name1.edit();
-//        editor4.putString("Given_name1", n2);
-//        editor4.commit();
 
 
         if (!n1.isEmpty()) {
+
+            SharedPreferences name1 = getSharedPreferences("Name_id1", 0);
+            SharedPreferences.Editor editor4 = name1.edit();
+            editor4.putString("Given_name1", n1);
+            editor4.commit();
+
+            SharedPreferences settings8 = getSharedPreferences("your_preference_name8", 0);
+             SharedPreferences.Editor editor8 = settings8.edit();
+            editor8.putBoolean("LoggedIn8", true);
+             editor8.commit();
 
             Toast.makeText(this, n1 + " you've successfully logged in!", Toast.LENGTH_SHORT).show();
 

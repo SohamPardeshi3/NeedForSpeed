@@ -87,8 +87,8 @@ public class wholesaler_shopping_screen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wholesaler_shopping_screen);
 
-        SharedPreferences naam = getSharedPreferences("Name_id", 0);
-        String name_p = naam.getString("Given_name", null);
+        SharedPreferences naam = getSharedPreferences("Name_id1", 0);
+        String name_p = naam.getString("Given_name1", null);
 
 
         setTitle("Welcome, "+ name_p);
