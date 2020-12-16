@@ -78,6 +78,11 @@ public class buyingScreen extends AppCompatActivity {
         startActivity(buyFertilizers);
     }
 
+    public void buyEquip(View view) {
+        Intent buyEquipments = new Intent(this, farmer_buy_equipments.class);
+        startActivity(buyEquipments);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
