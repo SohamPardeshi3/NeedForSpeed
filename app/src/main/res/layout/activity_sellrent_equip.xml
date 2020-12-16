@@ -30,7 +30,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:srcCompat="@drawable/chooseopt" />
+        app:srcCompat="@drawable/rentbuy" />
 
     <ImageButton
         android:id="@+id/sellEquipButton"
@@ -46,7 +46,7 @@
         app:layout_constraintHorizontal_bias="0.658"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView6"
-        app:srcCompat="@drawable/sell" />
+        app:srcCompat="@drawable/rent" />
 
     <ImageButton
         android:id="@+id/rentEquipButton"
