@@ -28,4 +28,10 @@ public class wholesaler_sell_by_category extends AppCompatActivity {
         startActivity(sellSeed);
     }
 
+    public void Equip(View view) {
+        Intent equipments = new Intent(this, sellrent_equip.class);
+        startActivity(equipments);
+    }
+
+
 }

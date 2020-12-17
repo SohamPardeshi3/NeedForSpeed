@@ -5,18 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".shoppingScreen">
+    tools:context=".choose_niche">
 
     <ImageButton
         android:id="@+id/sellImageButton"
         android:layout_width="300dp"
         android:layout_height="200dp"
+        android:layout_marginBottom="16dp"
         android:layout_marginEnd="35dp"
         android:layout_marginStart="35dp"
         android:layout_marginTop="15dp"
         android:background="#FFFFFF"
         android:onClick="Farmer"
         android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/buyImageButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
@@ -30,7 +32,6 @@
         android:layout_marginBottom="28dp"
         android:layout_marginEnd="35dp"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="25dp"
         android:background="#FFFFFF"
         android:onClick="wholesaler"
         android:scaleType="centerCrop"
@@ -47,6 +48,7 @@
         android:layout_height="50dp"
         android:layout_marginEnd="149dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
