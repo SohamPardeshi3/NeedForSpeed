@@ -78,7 +78,7 @@ public class wholesaler_shopping_screen extends AppCompatActivity {
     }
 
     public void wholesaleBuy(View view) {
-        Intent buy = new Intent(this, wholesaler_Buying_Screen.class);
+        Intent buy = new Intent(this, wholesaler_buy_items.class);
         startActivity(buy);
     }
 
