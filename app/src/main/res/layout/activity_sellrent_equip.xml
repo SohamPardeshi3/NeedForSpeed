@@ -46,7 +46,7 @@
         app:layout_constraintHorizontal_bias="0.658"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView6"
-        app:srcCompat="@drawable/rent" />
+        app:srcCompat="@drawable/sell" />
 
     <ImageButton
         android:id="@+id/rentEquipButton"
@@ -63,6 +63,6 @@
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sellEquipButton"
-        app:srcCompat="@drawable/buy" />
+        app:srcCompat="@drawable/rent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

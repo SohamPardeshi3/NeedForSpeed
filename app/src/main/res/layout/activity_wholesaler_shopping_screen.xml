@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
-    tools:context=".shoppingScreen">
+    tools:context=".wholesaler_shopping_screen">
 
     <ImageButton
         android:id="@+id/sellImageButton"
