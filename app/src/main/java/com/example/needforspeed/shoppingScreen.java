@@ -17,6 +17,8 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.net.Inet4Address;
+import java.util.HashSet;
+import java.util.Set;
 
 public class shoppingScreen extends AppCompatActivity {
 
@@ -87,6 +89,36 @@ public class shoppingScreen extends AppCompatActivity {
 
 
         setTitle("Welcome, "+ name_p);
+
+        //Seeds List
+
+        Set<String> SeedsItemSet = new HashSet<>();
+
+        SeedsItemSet.add("Items are: ");
+
+        SharedPreferences hashSetValue4 = getSharedPreferences("Seeds_value", 0);
+        SharedPreferences.Editor editor14 = hashSetValue4.edit();
+        editor14.putStringSet("Seeds_Final_List", SeedsItemSet);
+        editor14.commit();
+
+        Set<String> FertItemsSet = new HashSet<>();
+
+        FertItemsSet.add("Items are: ");
+
+        SharedPreferences hashSetValue5 = getSharedPreferences("FerT_hashSet_value", 0);
+        SharedPreferences.Editor editor15 = hashSetValue5.edit();
+        editor15.putStringSet("Fert_Final_List", FertItemsSet);
+        editor15.commit();
+
+        Set<String> EquipItemsSet = new HashSet<>();
+
+        EquipItemsSet.add("Items are: ");
+
+        SharedPreferences hashSetValue6 = getSharedPreferences("Equip_hashSet_value", 0);
+        SharedPreferences.Editor editor16 = hashSetValue6.edit();
+        editor16.putStringSet("Equip_Final_List", EquipItemsSet);
+        editor16.commit();
+
     }
 
     public void sellingScreen(View view) {                                  //onClick = sellingScreen

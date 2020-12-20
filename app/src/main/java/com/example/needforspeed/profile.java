@@ -97,7 +97,7 @@ public class profile extends AppCompatActivity {
 
            Intent intent = new Intent(this, shoppingScreen.class);
            startActivity(intent);
-           finish();
+
 
         }
     }

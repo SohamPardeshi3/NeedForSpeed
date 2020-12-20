@@ -25,6 +25,7 @@ public class introScreen3 extends AppCompatActivity {
         editor.putBoolean("LoggedIn", true);
         editor.commit();
 
+
         Intent intent = new Intent(this, choose_niche.class);
         startActivity(intent);
         finish();

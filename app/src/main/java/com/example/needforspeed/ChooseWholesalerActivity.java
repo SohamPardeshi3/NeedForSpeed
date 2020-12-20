@@ -3,6 +3,7 @@ package com.example.needforspeed;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -33,6 +34,13 @@ public class ChooseWholesalerActivity extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Disclaimer")
+                .setMessage("Choose the user to whom you want make this item available!")
+                .setPositiveButton("Okay", null)
+                .show();
 
         chooseWholesalerListView = findViewById(R.id.chooseWholesalerListView);
 

@@ -3,6 +3,7 @@ package com.example.needforspeed;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -42,6 +43,13 @@ public class farmer_buy_fertilizers extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Disclaimer")
+                .setMessage("Tap on the Item to know more about it or to add it in the cart!")
+                .setPositiveButton("Okay", null)
+                .show();
 
         fertilizersListView = findViewById(R.id.listView);
 
@@ -87,4 +95,12 @@ public class farmer_buy_fertilizers extends AppCompatActivity {
         });
 
     }
+
+    public void nextBuyActivity(View view){
+
+        Intent nxtIntent = new Intent(this, Cart_Activity_Farmer_Fertilizer.class);
+        startActivity(nxtIntent);
+
+    }
+
 }

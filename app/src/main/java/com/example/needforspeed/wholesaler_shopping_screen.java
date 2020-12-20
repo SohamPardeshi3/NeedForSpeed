@@ -15,6 +15,9 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class wholesaler_shopping_screen extends AppCompatActivity {
 
     // wholesaler shopping screen menu
@@ -92,5 +95,17 @@ public class wholesaler_shopping_screen extends AppCompatActivity {
 
 
         setTitle("Welcome, "+ name_p);
+
+        Set<String> ItemsSet = new HashSet<>();
+
+        ItemsSet.add("Items are: ");
+
+        SharedPreferences hashSetValue2 = getSharedPreferences("hashSet_value", 0);
+        SharedPreferences.Editor editor12 = hashSetValue2.edit();
+        editor12.putStringSet("Final_List", ItemsSet);
+        editor12.commit();
+
+
+
     }
 }

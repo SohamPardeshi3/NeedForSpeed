@@ -1,23 +1,17 @@
 package com.example.needforspeed;
 
-import androidx.annotation.ColorInt;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.browser.trusted.sharing.ShareTarget;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
-import android.view.autofill.AutofillValue;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Arrays;
@@ -25,18 +19,17 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-public class CartActivity extends AppCompatActivity {
-
+public class Cart_Activity_Farmer_Fertilizer extends AppCompatActivity {
 
     EditText addressEditText;
     String savedAdd;
     ListView itemsCheckList;
-    Set<String> ItemsSet;
+    Set<String> FertItemsSet;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cart);
+        setContentView(R.layout.activity_cart___farmer__fertilizer);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -47,48 +40,20 @@ public class CartActivity extends AppCompatActivity {
 
 
 
-        SharedPreferences hashSetValue = getSharedPreferences("hashSet_value", 0);
-        ItemsSet = hashSetValue.getStringSet("Final_List", null);
+        SharedPreferences hashSetValue5 = getSharedPreferences("FerT_hashSet_value", 0);
+        FertItemsSet = hashSetValue5.getStringSet("Fert_Final_List", null);
 
-        ItemsSet.remove("Items are: ");
+        FertItemsSet.remove("Items are: ");
 
-        String[] listItems = new String[ItemsSet.size()];
-        ItemsSet.toArray(listItems);
+        String[] listItems = new String[FertItemsSet.size()];
+        FertItemsSet.toArray(listItems);
 
         List<String> FinalListItems = Arrays.asList(listItems);
         Collections.reverse(FinalListItems);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, FinalListItems);
 
-
         itemsCheckList.setAdapter(arrayAdapter);
-
-
-        //typeItemsTextView.setText(getIntent().getStringExtra("type"));
-
-
-
-        // quantity code
-        /*
-        Intent i = getIntent();
-        String quantity = i.getStringExtra("Quantity");
-        quanEditText.setText(quantity);
-        quanEditText.setEnabled(false);                 // quanEditText is not further editable
-        quanEditText.setTextColor(getApplicationContext().getResources().getColor(R.color.browser_actions_text_color));
-
-        // amount code
-        int amount = Integer.valueOf(quantity) * 30 * 50;
-
-        String totalAmount = String.valueOf(amount);
-        amountEditText.setText(totalAmount);
-        amountEditText.setEnabled(false);               // amountEditText is not further editable
-        amountEditText.setTextColor(getApplicationContext().getResources().getColor(R.color.browser_actions_text_color));
-
-        totalEditText.setText(totalAmount);
-        totalEditText.setEnabled(false);                // totalEditText is not further editable
-        totalEditText.setTextColor(getApplicationContext().getResources().getColor(R.color.browser_actions_text_color));
-
-         */
 
         SharedPreferences Addname = getSharedPreferences("Address_id", 0);
         String Address_p = Addname.getString("Given_address", null);
@@ -116,10 +81,7 @@ public class CartActivity extends AppCompatActivity {
                             finish();
 
  */
-
-
-
-                            Intent order = new Intent(CartActivity.this, placeOrderActivity.class);
+                            Intent order = new Intent(Cart_Activity_Farmer_Fertilizer.this, placeOrderActivity.class);
                             startActivity(order);
 
                         }
@@ -142,9 +104,10 @@ public class CartActivity extends AppCompatActivity {
 
     public void Reload(View view){
 
-       finish();
-       startActivity(getIntent());
+        finish();
+        startActivity(getIntent());
 
     }
+
 
 }

@@ -3,14 +3,17 @@ package com.example.needforspeed;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -19,6 +22,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class wholesaler_buy_items extends AppCompatActivity {
 
@@ -27,6 +32,8 @@ public class wholesaler_buy_items extends AppCompatActivity {
     FirebaseAuth mAuth;
     ArrayList<DataSnapshot> itemInfo = new ArrayList<>();
 
+    Intent nxtIntent;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +41,13 @@ public class wholesaler_buy_items extends AppCompatActivity {
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
+        builder.setTitle("Disclaimer")
+                .setMessage("Tap on the Item to know more about it or to add it in the cart!")
+                .setPositiveButton("Okay", null)
+                .show();
 
         selectItemsListView = findViewById(R.id.selectItemsListView);
 
@@ -76,5 +90,16 @@ public class wholesaler_buy_items extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
     }
+
+    public void nextBuyActivity(View view){
+
+        nxtIntent = new Intent(this, CartActivity.class);
+        startActivity(nxtIntent);
+
+    }
+
 }
