@@ -8,114 +8,99 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="348dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="36dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="336dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="116dp"
         android:backgroundTint="#248528"
         android:onClick="next"
         android:text="Next"
         android:textColor="#FFFFFF"
         android:textStyle="italic"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9" />
+        app:layout_constraintTop_toTopOf="@+id/guideline17" />
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="88dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="50dp"
-        android:layout_marginStart="14dp"
-        android:layout_marginTop="37dp"
+        android:layout_width="91dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="256dp"
+        android:layout_marginTop="104dp"
         android:backgroundTint="#D8D5D5"
         android:onClick="sms"
         android:text="Get Otp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline15" />
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="125dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="18dp"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="160dp"
         android:onClick="veri"
         android:text="Verify"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        app:layout_constraintTop_toTopOf="@+id/guideline16" />
 
     <EditText
         android:id="@+id/editText3"
-        android:layout_width="340dp"
-        android:layout_height="49dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="80dp"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/recedittext"
         android:ems="10"
         android:hint=" Enter Name"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+        app:layout_constraintTop_toTopOf="@+id/guideline15" />
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="wrap_content"
-        android:layout_height="47dp"
-        android:layout_marginEnd="14dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="36dp"
+        android:layout_width="215dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="104dp"
         android:background="@drawable/recedittext"
         android:ems="10"
         android:hint="  Enter number"
         android:inputType="number"
         android:paddingLeft="10dp"
-        app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toTopOf="@+id/guideline15" />
 
     <ImageView
         android:id="@+id/imageView9"
-        android:layout_width="359dp"
+        android:layout_width="325dp"
         android:layout_height="58dp"
-        android:layout_marginBottom="4dp"
-        android:layout_marginTop="10dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.692"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button3"
+        app:layout_constraintTop_toTopOf="@+id/guideline17"
         app:srcCompat="@drawable/by" />
 
     <ImageView
         android:id="@+id/imageView8"
-        android:layout_width="300dp"
-        android:layout_height="90dp"
+        android:layout_width="290dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="60dp"
         android:layout_marginTop="16dp"
         android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/nfs" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="298dp"
-        android:layout_height="53dp"
-        android:layout_marginEnd="56dp"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="280dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="84dp"
         android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2">
+        app:layout_constraintTop_toTopOf="@+id/guideline16">
 
         <EditText
             android:id="@+id/editText8"
@@ -124,8 +109,8 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="number"
-            android:textAlignment="center"
-            android:maxLength="1"/>
+            android:maxLength="1"
+            android:textAlignment="center" />
 
         <EditText
             android:id="@+id/editText9"
@@ -134,8 +119,8 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="number"
-            android:textAlignment="center"
-            android:maxLength="1"/>
+            android:maxLength="1"
+            android:textAlignment="center" />
 
         <EditText
             android:id="@+id/editText10"
@@ -144,8 +129,8 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="number"
-            android:textAlignment="center"
-            android:maxLength="1"/>
+            android:maxLength="1"
+            android:textAlignment="center" />
 
         <EditText
             android:id="@+id/editText11"
@@ -154,8 +139,8 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="number"
-            android:textAlignment="center"
-            android:maxLength="1" />
+            android:maxLength="1"
+            android:textAlignment="center" />
 
         <EditText
             android:id="@+id/editText12"
@@ -164,8 +149,8 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="number"
-            android:textAlignment="center"
-            android:maxLength="1"/>
+            android:maxLength="1"
+            android:textAlignment="center" />
 
         <EditText
             android:id="@+id/editText13"
@@ -174,24 +159,60 @@
             android:layout_weight="1"
             android:ems="10"
             android:inputType="number"
-            android:textAlignment="center"
-            android:maxLength="1"/>
+            android:maxLength="1"
+            android:textAlignment="center" />
     </LinearLayout>
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="94dp"
-        android:layout_height="21dp"
-        android:layout_marginBottom="56dp"
-        android:layout_marginEnd="285dp"
-        android:layout_marginStart="40dp"
-        android:layout_marginTop="80dp"
+        android:layout_width="98dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="36dp"
         android:text="Enter OTP:"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toTopOf="@+id/guideline16" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="-16dp"
+        app:layout_constraintGuide_percent="0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="161dp"
+        app:layout_constraintGuide_percent="0.18" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="352dp"
+        app:layout_constraintGuide_percent="0.41" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="730dp"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="544dp"
+        app:layout_constraintGuide_percent="1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
