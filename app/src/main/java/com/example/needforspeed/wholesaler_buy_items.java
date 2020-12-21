@@ -82,6 +82,7 @@ public class wholesaler_buy_items extends AppCompatActivity {
                 Intent intent = new Intent(wholesaler_buy_items.this, ViewItems.class);
 
                 intent.putExtra("from", snapshot.child("from").getValue().toString());
+                intent.putExtra("phone", snapshot.child("phone").getValue().toString());
                 intent.putExtra("type", snapshot.child("type").getValue().toString());
                 intent.putExtra("rate", snapshot.child("rate").getValue().toString());
                 intent.putExtra("quantity", snapshot.child("quantity").getValue().toString());
