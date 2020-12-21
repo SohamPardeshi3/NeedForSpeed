@@ -48,12 +48,16 @@ public class ViewFertilizers extends AppCompatActivity {
         value = getIntent().getStringExtra("quantity");
         val1 = Integer.valueOf(value);
 
+//            String fName = getIntent().getStringExtra("from");
+//            String no = getIntent().getStringExtra("phone");
+//            String Name = fName + " (" + no +" )";
 
-            fromTextView.setText(getIntent().getStringExtra("from"));
-            typeTextView.setText(getIntent().getStringExtra("type"));
-            quantityTextView.setText(getIntent().getStringExtra("quantity"));
-            rateTextView.setText(getIntent().getStringExtra("rate"));
-            descTextView.setText(getIntent().getStringExtra("description"));
+        fromTextView.setText(getIntent().getStringExtra("from"));
+        //fromTextView.setText(Name);
+        typeTextView.setText(getIntent().getStringExtra("type"));
+        quantityTextView.setText(getIntent().getStringExtra("quantity"));
+        rateTextView.setText(getIntent().getStringExtra("rate"));
+        descTextView.setText(getIntent().getStringExtra("description"));
 
     }
 

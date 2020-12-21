@@ -123,7 +123,7 @@ public class shoppingScreen extends AppCompatActivity {
 
     public void sellingScreen(View view) {                                  //onClick = sellingScreen
         Log.i("Button", "Sell button clicked");
-        Intent intent = new Intent(this, sellingScreen.class);
+        Intent intent = new Intent(this, additems.class);
         startActivity(intent);
     }
 

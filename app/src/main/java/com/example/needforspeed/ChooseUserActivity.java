@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -15,10 +16,13 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -30,6 +34,7 @@ public class ChooseUserActivity extends AppCompatActivity {
     ListView chooseUserListView;
     ArrayList<String> users = new ArrayList<>();
     ArrayList<String> keys = new ArrayList<>();
+    String Name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,11 +77,27 @@ public class ChooseUserActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {}
         });
 
+        //getting the name of wholesaler(current)
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("wholesaler").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                    Name = snapshot.child("name").getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+        //adding values to the database
         chooseUserListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 HashMap<String, String> fertMap = new HashMap<>();
-                fertMap.put("from", FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+                fertMap.put("phone", FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+                fertMap.put("from", Name);
                 fertMap.put("type", getIntent().getStringExtra("Value"));
                 fertMap.put("rate", getIntent().getStringExtra("Amount"));
                 fertMap.put("quantity", getIntent().getStringExtra("Quantity"));

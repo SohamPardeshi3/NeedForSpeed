@@ -76,6 +76,7 @@ public class farmer_buy_seeds extends AppCompatActivity {
                 Intent intent = new Intent(farmer_buy_seeds.this, ViewSeeds.class);
 
                 intent.putExtra("from", snapshot.child("from").getValue().toString());
+                intent.putExtra("phone", snapshot.child("phone").getValue().toString());
                 intent.putExtra("type", snapshot.child("type").getValue().toString());
                 intent.putExtra("rate", snapshot.child("rate").getValue().toString());
                 intent.putExtra("quantity", snapshot.child("quantity").getValue().toString());
