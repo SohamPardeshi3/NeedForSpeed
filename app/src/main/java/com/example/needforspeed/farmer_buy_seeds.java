@@ -7,11 +7,15 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -20,6 +24,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.Set;
 
 public class farmer_buy_seeds extends AppCompatActivity {
 
@@ -27,6 +32,8 @@ public class farmer_buy_seeds extends AppCompatActivity {
     ArrayList<String> seedsUsers = new ArrayList<>();
     FirebaseAuth mAuth;
     ArrayList<DataSnapshot> seedInfo = new ArrayList<>();
+
+    Button proceedToCheckOutButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +51,7 @@ public class farmer_buy_seeds extends AppCompatActivity {
                 .show();
 
         seedsListView = findViewById(R.id.seedsListView);
+        proceedToCheckOutButton = findViewById(R.id.ProceedToCheckoutbutton4);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, seedsUsers);
         seedsListView.setAdapter(arrayAdapter);
@@ -85,6 +93,9 @@ public class farmer_buy_seeds extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
     }
 
     public void nextBuyActivity(View view){
