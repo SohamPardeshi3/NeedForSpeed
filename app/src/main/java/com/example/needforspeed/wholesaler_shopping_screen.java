@@ -20,6 +20,8 @@ import java.util.Set;
 
 public class wholesaler_shopping_screen extends AppCompatActivity {
 
+    private static final int TIME_INTERVAL = 2000; // # milliseconds, desired time passed between two back presses.
+    private long mBackPressed;
     // wholesaler shopping screen menu
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -108,4 +110,18 @@ public class wholesaler_shopping_screen extends AppCompatActivity {
 
 
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis())
+        {
+            super.onBackPressed();
+            return;
+        }
+        else { Toast.makeText(getBaseContext(), "Tap back button in order to exit", Toast.LENGTH_SHORT).show(); }
+
+        mBackPressed = System.currentTimeMillis();
+    }
+
 }

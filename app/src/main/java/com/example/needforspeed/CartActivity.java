@@ -12,8 +12,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.autofill.AutofillValue;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -29,9 +31,13 @@ public class CartActivity extends AppCompatActivity {
 
 
     EditText addressEditText;
-    String savedAdd;
+
     ListView itemsCheckList;
     Set<String> ItemsSet;
+    List<String> FinalListItems;
+
+    String toRemove;
+    String[] listItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +47,10 @@ public class CartActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        Toast.makeText(this, "Long press on the item to delete it!", Toast.LENGTH_LONG).show();
 
         addressEditText = findViewById(R.id.addressEditText);
         itemsCheckList = findViewById(R.id.listView);
-
 
 
         SharedPreferences hashSetValue = getSharedPreferences("hashSet_value", 0);
@@ -52,16 +58,35 @@ public class CartActivity extends AppCompatActivity {
 
         ItemsSet.remove("Items are: ");
 
-        String[] listItems = new String[ItemsSet.size()];
+        listItems = new String[ItemsSet.size()];
         ItemsSet.toArray(listItems);
 
-        List<String> FinalListItems = Arrays.asList(listItems);
+        FinalListItems = Arrays.asList(listItems);
         Collections.reverse(FinalListItems);
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, FinalListItems);
-
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listItems);
 
         itemsCheckList.setAdapter(arrayAdapter);
+
+        itemsCheckList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                toRemove = arrayAdapter.getItem(position);
+                listItems[position] = "Removed";
+
+                ItemsSet.remove(toRemove);
+                Log.i("After Seeds Item value", String.valueOf(ItemsSet));
+
+                SharedPreferences hashSetValue2 = getSharedPreferences("hashSet_value", 0);
+                SharedPreferences.Editor editor12 = hashSetValue2.edit();
+                editor12.putStringSet("Final_List", ItemsSet);
+                editor12.commit();
+
+                arrayAdapter.notifyDataSetChanged();
+                return true;
+            }
+        });
 
 
         //typeItemsTextView.setText(getIntent().getStringExtra("type"));
@@ -98,7 +123,10 @@ public class CartActivity extends AppCompatActivity {
 
     public void placeOrder(View view) {
 
-        if (!addressEditText.getText().toString().isEmpty()) {
+        SharedPreferences hashSetValue = getSharedPreferences("hashSet_value", 0);
+        Set<String> ItemsSet2 = hashSetValue.getStringSet("Final_List", null);
+
+        if (!addressEditText.getText().toString().isEmpty() && !ItemsSet2.isEmpty()) {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -128,7 +156,7 @@ public class CartActivity extends AppCompatActivity {
 
                     .show();
         }else {
-            Toast.makeText(this, "Address not given!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Address not given or Cart Empty!", Toast.LENGTH_SHORT).show();
         }
 
     }

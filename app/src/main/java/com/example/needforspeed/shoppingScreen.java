@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -21,6 +22,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class shoppingScreen extends AppCompatActivity {
+
+    private static final int TIME_INTERVAL = 2000; // # milliseconds, desired time passed between two back presses.
+    private long mBackPressed;
 
     //shopping screen menu
     @Override
@@ -54,8 +58,18 @@ public class shoppingScreen extends AppCompatActivity {
 
             return true;
 
-            case R.id.help:
-                Log.i("help", "help clicked");
+            case R.id.LawsFarming:
+                Intent intent4=new Intent(Intent.ACTION_VIEW);
+                intent4.setData(Uri.parse("http://agricoop.nic.in/acts-and-rules-listing"));
+                startActivity(intent4);
+
+                return true;
+
+            case R.id.ModernAgri:
+                Intent Webintent=new Intent(this, WebActivity.class);
+                //intent.setData(Uri.parse("https://www.plugandplaytechcenter.com/resources/new-agriculture-technology-modern-farming/"));
+                startActivity(Webintent);
+
                 return true;
 
             case R.id.logout:
@@ -132,4 +146,18 @@ public class shoppingScreen extends AppCompatActivity {
         Intent intent = new Intent(this, buyingScreen.class);
         startActivity(intent);
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        if (mBackPressed + TIME_INTERVAL > System.currentTimeMillis())
+        {
+            super.onBackPressed();
+            return;
+        }
+        else { Toast.makeText(getBaseContext(), "Tap back button in order to exit", Toast.LENGTH_SHORT).show(); }
+
+        mBackPressed = System.currentTimeMillis();
+    }
+
 }
