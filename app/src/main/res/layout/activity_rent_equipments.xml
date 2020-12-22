@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".rent_equipments">
+
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="404dp"
+        android:layout_height="79dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/nfs" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="169dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="225dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="16dp"
+        android:text="Add Items:"
+        android:textColor="#4CAF50"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="166dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="225dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="20dp"
+        android:text="1. Item Name:"
+        android:textColor="#4CAF50"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <EditText
+        android:id="@+id/rentNameEditText"
+        android:layout_width="298dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/recedittext"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="166dp"
+        android:layout_height="33dp"
+        android:layout_marginEnd="225dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="20dp"
+        android:text="2. Item Rate:"
+        android:textColor="#4CAF50"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rentNameEditText" />
+
+    <EditText
+        android:id="@+id/rentAmountEditText"
+        android:layout_width="293dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/recedittext"
+        android:ems="10"
+        android:hint="  per day"
+        android:inputType="number"
+        android:paddingLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <ImageButton
+        android:id="@+id/rentEqui"
+        android:layout_width="165dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="136dp"
+        android:background="#FAFAFA"
+        android:onClick="rentEquip"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/discardEqui"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addQuantityEditText"
+        app:srcCompat="@drawable/proceed" />
+
+    <ImageButton
+        android:id="@+id/discardEqui"
+        android:layout_width="165dp"
+        android:layout_height="45dp"
+        android:layout_marginBottom="32dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="11dp"
+        android:layout_marginTop="136dp"
+        android:background="#FAFAFA"
+        android:onClick="discardEquip"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/rentEqui"
+        app:layout_constraintTop_toBottomOf="@+id/addQuantityEditText"
+        app:srcCompat="@drawable/discard" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
