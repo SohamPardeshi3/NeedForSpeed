@@ -8,7 +8,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -22,9 +24,13 @@ import java.util.Set;
 public class Cart_Activity_Farmer_Fertilizer extends AppCompatActivity {
 
     EditText addressEditText;
-    String savedAdd;
+
     ListView itemsCheckList;
     Set<String> FertItemsSet;
+    List<String> FinalListItems;
+
+    String toRemove;
+    String[] listItems;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +40,7 @@ public class Cart_Activity_Farmer_Fertilizer extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        Toast.makeText(this, "Long press on the item to delete it!", Toast.LENGTH_LONG).show();
 
         addressEditText = findViewById(R.id.addressEditText);
         itemsCheckList = findViewById(R.id.listView);
@@ -45,15 +52,35 @@ public class Cart_Activity_Farmer_Fertilizer extends AppCompatActivity {
 
         FertItemsSet.remove("Items are: ");
 
-        String[] listItems = new String[FertItemsSet.size()];
+        listItems = new String[FertItemsSet.size()];
         FertItemsSet.toArray(listItems);
 
-        List<String> FinalListItems = Arrays.asList(listItems);
+        FinalListItems = Arrays.asList(listItems);
         Collections.reverse(FinalListItems);
 
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, FinalListItems);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listItems);
 
         itemsCheckList.setAdapter(arrayAdapter);
+
+        itemsCheckList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                toRemove = arrayAdapter.getItem(position);
+                listItems[position] = "Removed";
+
+                FertItemsSet.remove(toRemove);
+                Log.i("After Seeds Item value", String.valueOf(FertItemsSet));
+
+                SharedPreferences hashSetValue5 = getSharedPreferences("FerT_hashSet_value", 0);
+                SharedPreferences.Editor editor15 = hashSetValue5.edit();
+                editor15.putStringSet("Fert_Final_List", FertItemsSet);
+                editor15.commit();
+
+                arrayAdapter.notifyDataSetChanged();
+                return true;
+            }
+        });
 
         SharedPreferences Addname = getSharedPreferences("Address_id", 0);
         String Address_p = Addname.getString("Given_address", null);
@@ -63,7 +90,10 @@ public class Cart_Activity_Farmer_Fertilizer extends AppCompatActivity {
 
     public void placeOrder(View view) {
 
-        if (!addressEditText.getText().toString().isEmpty()) {
+        SharedPreferences hashSetValue5 = getSharedPreferences("FerT_hashSet_value", 0);
+        Set<String> FertItemsSet2 = hashSetValue5.getStringSet("Fert_Final_List", null);
+
+        if (!addressEditText.getText().toString().isEmpty() && !FertItemsSet2.isEmpty()) {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -90,7 +120,7 @@ public class Cart_Activity_Farmer_Fertilizer extends AppCompatActivity {
 
                     .show();
         }else {
-            Toast.makeText(this, "Address not given!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Address not given or Cart Empty!", Toast.LENGTH_SHORT).show();
         }
 
     }
