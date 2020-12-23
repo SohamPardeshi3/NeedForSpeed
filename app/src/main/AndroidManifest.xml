@@ -9,13 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".PreviousOrders_WHolesaler"></activity>
+        <activity android:name=".WebActivity" />
         <activity android:name=".ViewRentedItems"></activity>
         <activity android:name=".farmer_rent_equipments" />
         <activity android:name=".farmer_buyrent_equip" />
         <activity android:name=".RentUserActivity" />
         <activity android:name=".rent_equipments" />
         <activity android:name=".CartActivity_Farmer_Euipments" />
-        <activity android:name=".WebActivity"></activity>
+
         <activity android:name=".Cart_Activity_Farmer_Fertilizer" />
         <activity android:name=".CartActivity_Farmer_Seeds" />
         <activity android:name=".wholesaler_buy_items" />
@@ -52,6 +54,7 @@
         <activity android:name=".otp_login" />
         <activity android:name=".choose_niche" />
         <activity android:name=".buyingScreen" />
+        <activity android:name=".sellingScreen" />
         <activity android:name=".cottonSeedsActivity" />
         <activity android:name=".placeOrderActivity" />
         <activity android:name=".CartActivity" />

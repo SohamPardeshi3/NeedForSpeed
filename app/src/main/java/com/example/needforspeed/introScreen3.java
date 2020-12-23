@@ -8,6 +8,9 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class introScreen3 extends AppCompatActivity {
 
     @Override
@@ -16,6 +19,9 @@ public class introScreen3 extends AppCompatActivity {
         setContentView(R.layout.activity_intro_screen3);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+
+
     }
 
     public void screen4(View view){

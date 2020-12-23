@@ -22,12 +22,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
 public class CartActivity extends AppCompatActivity {
+
+    DatabaseReference rootRef, demoRef;
 
 
     EditText addressEditText;
@@ -64,6 +69,12 @@ public class CartActivity extends AppCompatActivity {
         FinalListItems = Arrays.asList(listItems);
         Collections.reverse(FinalListItems);
 
+        rootRef = FirebaseDatabase.getInstance().getReference();
+
+        demoRef = rootRef.child("Demo");
+
+        demoRef.setValue(FinalListItems);
+
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listItems);
 
         itemsCheckList.setAdapter(arrayAdapter);
@@ -84,6 +95,9 @@ public class CartActivity extends AppCompatActivity {
                 editor12.commit();
 
                 arrayAdapter.notifyDataSetChanged();
+
+
+
                 return true;
             }
         });
@@ -126,6 +140,9 @@ public class CartActivity extends AppCompatActivity {
         SharedPreferences hashSetValue = getSharedPreferences("hashSet_value", 0);
         Set<String> ItemsSet2 = hashSetValue.getStringSet("Final_List", null);
 
+        SharedPreferences PreviousOrders = getSharedPreferences("Previous_Orders", 0);
+        Set<String> MyOrders = PreviousOrders.getStringSet("Previous_Orders_List", null);
+
         if (!addressEditText.getText().toString().isEmpty() && !ItemsSet2.isEmpty()) {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
@@ -144,9 +161,16 @@ public class CartActivity extends AppCompatActivity {
                             finish();
 
  */
+                            MyOrders.addAll(ItemsSet2);
+                            Log.i("All Orders", String.valueOf(MyOrders));
 
 
+                            SharedPreferences PreviousOrders = getSharedPreferences("Previous_Orders", 0);
+                            SharedPreferences.Editor editor20 = PreviousOrders.edit();
+                            editor20.putStringSet("Previous_Orders_List", MyOrders);
+                            editor20.commit();
 
+                            
                             Intent order = new Intent(CartActivity.this, placeOrderActivity.class);
                             startActivity(order);
 

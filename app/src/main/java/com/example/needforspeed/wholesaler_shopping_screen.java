@@ -44,6 +44,12 @@ public class wholesaler_shopping_screen extends AppCompatActivity {
 
                 return true;
 
+            case R.id.myOrder:
+                Intent myOrderIntent = new Intent(this, PreviousOrders_WHolesaler.class);
+                startActivity(myOrderIntent);
+
+                return true;
+
             case R.id.update:
                 Toast.makeText(getApplicationContext(), "You're already up to date",Toast.LENGTH_SHORT).show();
                 return true;
@@ -85,6 +91,9 @@ public class wholesaler_shopping_screen extends AppCompatActivity {
     public void wholesaleBuy(View view) {
         Intent buy = new Intent(this, wholesaler_buy_items.class);
         startActivity(buy);
+
+
+
     }
 
     @Override
@@ -107,6 +116,18 @@ public class wholesaler_shopping_screen extends AppCompatActivity {
         editor12.putStringSet("Final_List", ItemsSet);
         editor12.commit();
 
+
+
+
+        Set<String> MyOrders = new HashSet<>();
+        MyOrders.add("Items are: ");
+
+        Log.i("May order value", String.valueOf(MyOrders));
+
+        SharedPreferences PreviousOrders = getSharedPreferences("Previous_Orders", 0);
+        SharedPreferences.Editor editor20 = PreviousOrders.edit();
+        editor20.putStringSet("Previous_Orders_List", MyOrders);
+        editor20.apply();
 
 
     }
