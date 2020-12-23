@@ -29,6 +29,7 @@ public class ChooseUserActivity_equipments extends AppCompatActivity {
     ArrayList<String> equipUsers = new ArrayList<>();
     ArrayList<String> equipKeys = new ArrayList<>();
     String Name;
+    String Location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +57,8 @@ public class ChooseUserActivity_equipments extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 String user = snapshot.child("name").getValue().toString();
-                equipUsers.add(user);                                                                    // adds all the users from the database
+                Location = snapshot.child("location").getValue().toString();
+                equipUsers.add(user + " (" + Location + ")");                                                                    // adds all the users from the database
                 equipKeys.add(snapshot.getKey());                                                        // gets the key of each user from the database
                 equipArrayAdapter.notifyDataSetChanged();
             }

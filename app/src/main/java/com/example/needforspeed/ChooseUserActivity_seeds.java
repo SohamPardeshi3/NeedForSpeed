@@ -29,6 +29,7 @@ public class ChooseUserActivity_seeds extends AppCompatActivity {
     ArrayList<String> seedUsers = new ArrayList<>();
     ArrayList<String> seedKeys = new ArrayList<>();
     String Name;
+    String Location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +57,8 @@ public class ChooseUserActivity_seeds extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 String user = snapshot.child("name").getValue().toString();
-                seedUsers.add(user);                                                                    // adds all the users from the database
+                Location = snapshot.child("location").getValue().toString();
+                seedUsers.add(user + " (" + Location + ")");                                                                    // adds all the users from the database
                 seedKeys.add(snapshot.getKey());                                                        // gets the key of each user from the database
                 seedsArrayAdapter.notifyDataSetChanged();
             }

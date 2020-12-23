@@ -27,7 +27,7 @@ import java.util.concurrent.TimeUnit;
 
 public class wholesaler_otp_login extends AppCompatActivity {
 
-    EditText inputcode1, inputcode2, inputcode3, inputcode4, inputcode5, inputcode6, inputMobile, name;
+    EditText inputcode1, inputcode2, inputcode3, inputcode4, inputcode5, inputcode6, inputMobile, name, locationEditText;
 
     String verificationID;
 
@@ -36,7 +36,7 @@ public class wholesaler_otp_login extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_otp_login);
+        setContentView(R.layout.activity_wholesaler_otp_login);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -50,6 +50,7 @@ public class wholesaler_otp_login extends AppCompatActivity {
 
         next.setEnabled(false);
 
+        locationEditText = findViewById(R.id.locationEditText);
         inputcode1 = findViewById(R.id.editText8);
         inputcode2 = findViewById(R.id.editText9);
         inputcode3 = findViewById(R.id.editText10);
@@ -134,6 +135,7 @@ public class wholesaler_otp_login extends AppCompatActivity {
 
                                         // add wholesaler to database
                                         FirebaseDatabase.getInstance().getReference().child("wholesaler").child(task.getResult().getUser().getUid()).child("name").setValue(name.getText().toString());
+                                        FirebaseDatabase.getInstance().getReference().child("wholesaler").child(task.getResult().getUser().getUid()).child("location").setValue(locationEditText.getText().toString());
                                         Toast.makeText(wholesaler_otp_login.this, "Correct Otp", Toast.LENGTH_SHORT).show();
 
                                     }else {

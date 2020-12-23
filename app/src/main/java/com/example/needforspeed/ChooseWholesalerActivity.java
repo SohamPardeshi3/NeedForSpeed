@@ -29,6 +29,7 @@ public class ChooseWholesalerActivity extends AppCompatActivity {
     ArrayList<String> wholesalers = new ArrayList<>();
     ArrayList<String> wholesalerKeys = new ArrayList<>();
     String Name;
+    String Location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +57,8 @@ public class ChooseWholesalerActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 String user = snapshot.child("name").getValue().toString();
-                wholesalers.add(user);                                                                    // adds all the users from the database
+                Location = snapshot.child("location").getValue().toString();
+                wholesalers.add(user + " (" + Location + ")");                                                                    // adds all the users from the database
                 wholesalerKeys.add(snapshot.getKey());                                                        // gets the key of each user from the database
                 wholesalerArrayAdapter.notifyDataSetChanged();
             }

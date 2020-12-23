@@ -29,12 +29,12 @@
         android:layout_height="48dp"
         android:layout_marginEnd="50dp"
         android:layout_marginStart="14dp"
-        android:layout_marginTop="37dp"
+        android:layout_marginTop="28dp"
         android:backgroundTint="#D8D5D5"
         android:text="Get Otp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/locationEditText" />
 
     <Button
         android:id="@+id/button3"
@@ -50,7 +50,7 @@
         android:id="@+id/editText3"
         android:layout_width="340dp"
         android:layout_height="49dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/recedittext"
         android:ems="10"
         android:hint=" Enter Name"
@@ -62,12 +62,28 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
     <EditText
+        android:id="@+id/locationEditText"
+        android:layout_width="340dp"
+        android:layout_height="49dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/recedittext"
+        android:ems="10"
+        android:hint=" Enter Location"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+
+    <EditText
         android:id="@+id/editText"
         android:layout_width="wrap_content"
         android:layout_height="47dp"
         android:layout_marginEnd="14dp"
         android:layout_marginStart="36dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="27dp"
         android:background="@drawable/recedittext"
         android:ems="10"
         android:hint="  Enter number"
@@ -75,7 +91,7 @@
         android:paddingLeft="10dp"
         app:layout_constraintEnd_toStartOf="@+id/button2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText3" />
+        app:layout_constraintTop_toBottomOf="@+id/locationEditText" />
 
     <ImageView
         android:id="@+id/imageView9"

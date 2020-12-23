@@ -29,6 +29,7 @@ public class RentUserActivity extends AppCompatActivity {
     ArrayList<String> rentUsers = new ArrayList<>();
     ArrayList<String> rentKeys = new ArrayList<>();
     String Name;
+    String Location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +57,8 @@ public class RentUserActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 String user = snapshot.child("name").getValue().toString();
-                rentUsers.add(user);                                                                    // adds all the users from the database
+                Location = snapshot.child("location").getValue().toString();
+                rentUsers.add(user + " (" + Location + ")");                                                                    // adds all the users from the database
                 rentKeys.add(snapshot.getKey());                                                        // gets the key of each user from the database
                 rentAdapter.notifyDataSetChanged();
             }
