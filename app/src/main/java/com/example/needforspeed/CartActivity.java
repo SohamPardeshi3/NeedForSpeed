@@ -69,9 +69,9 @@ public class CartActivity extends AppCompatActivity {
         FinalListItems = Arrays.asList(listItems);
         Collections.reverse(FinalListItems);
 
-        rootRef = FirebaseDatabase.getInstance().getReference();
+        //rootRef = FirebaseDatabase.getInstance().getReference();
 
-        demoRef = rootRef.child("Demo");
+        //demoRef = rootRef.child("Demo");
 
         demoRef.setValue(FinalListItems);
 

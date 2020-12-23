@@ -88,5 +88,8 @@ public class farmer_rent_equipments extends AppCompatActivity {
 
     public void proceed(View view) {
         //add code here
+        Intent checkOut = new Intent(this, CartActivity_Farmer_Rent.class);
+        startActivity(checkOut);
+
     }
 }

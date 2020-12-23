@@ -27,9 +27,7 @@ import java.util.Set;
 
 public class PreviousOrders_WHolesaler extends AppCompatActivity {
 
-    DatabaseReference rootRef, demoRef;
-    String[] Value;
-    ArrayList<String> Valves = new ArrayList<>();
+
 
     TextView listView;
 
@@ -42,31 +40,6 @@ public class PreviousOrders_WHolesaler extends AppCompatActivity {
         actionBar.hide();
 
        listView = findViewById(R.id.textView16);
-
-        rootRef = FirebaseDatabase.getInstance().getReference();
-
-        demoRef = rootRef.child("Demo");
-
-
-
-        demoRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Valves = (ArrayList<String>) snapshot.getValue();
-
-                Log.i("Value of List", String.valueOf(Valves));
-              
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        //ArrayAdapter<String> itemAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Valves);
-        //listView.setAdapter(itemAdapter);
 
 
 

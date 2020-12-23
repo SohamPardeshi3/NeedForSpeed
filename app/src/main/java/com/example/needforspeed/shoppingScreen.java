@@ -133,6 +133,15 @@ public class shoppingScreen extends AppCompatActivity {
         editor16.putStringSet("Equip_Final_List", EquipItemsSet);
         editor16.commit();
 
+        Set<String> RentEquipItemsSet = new HashSet<>();
+
+        RentEquipItemsSet.add("Items are: ");
+
+        SharedPreferences hashSetValue21 = getSharedPreferences("Rent_Equip_hashSet_value", 0);
+        SharedPreferences.Editor editor21 = hashSetValue21.edit();
+        editor21.putStringSet("Rent_Equip_Final_List", RentEquipItemsSet);
+        editor21.commit();
+
     }
 
     public void sellingScreen(View view) {                                  //onClick = sellingScreen
