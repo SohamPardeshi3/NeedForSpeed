@@ -27,7 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.concurrent.TimeUnit;
 
 public class otp_login extends AppCompatActivity {
-    EditText inputcode1, inputcode2, inputcode3, inputcode4, inputcode5, inputcode6, inputMobile, name;
+    EditText inputcode1, inputcode2, inputcode3, inputcode4, inputcode5, inputcode6, inputMobile, name, locEditText;
 
     String verificationCode, cd;
 
@@ -54,7 +54,7 @@ public class otp_login extends AppCompatActivity {
 
         next.setEnabled(false);
 
-
+        locEditText = findViewById(R.id.locEditText);
         inputcode1 = findViewById(R.id.editText8);
         inputcode2 = findViewById(R.id.editText9);
         inputcode3 = findViewById(R.id.editText10);
@@ -108,6 +108,7 @@ public class otp_login extends AppCompatActivity {
                     if (task.isSuccessful()){
                         // add farmer to database
                         FirebaseDatabase.getInstance().getReference().child("farmer").child(task.getResult().getUser().getUid()).child("name").setValue(name.getText().toString());
+                        FirebaseDatabase.getInstance().getReference().child("farmer").child(task.getResult().getUser().getUid()).child("location").setValue(locEditText.getText().toString());
                         Toast.makeText(otp_login.this, "Correct Otp", Toast.LENGTH_SHORT).show();
 
                     }else {

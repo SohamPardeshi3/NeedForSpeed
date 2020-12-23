@@ -20,7 +20,6 @@ public class choose_niche extends AppCompatActivity {
     }
 
     public void Farmer(View view){
-
         Intent intent = new Intent(this, otp_login.class);
         startActivity(intent);
         finish();
@@ -29,5 +28,6 @@ public class choose_niche extends AppCompatActivity {
     public void wholesaler(View view) {
         Intent wholesaler = new Intent(this, wholesaler_otp_login.class);
         startActivity(wholesaler);
+        finish();
     }
 }

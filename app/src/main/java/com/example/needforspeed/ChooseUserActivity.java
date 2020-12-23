@@ -35,6 +35,7 @@ public class ChooseUserActivity extends AppCompatActivity {
     ArrayList<String> users = new ArrayList<>();
     ArrayList<String> keys = new ArrayList<>();
     String Name;
+    String Location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,11 +59,30 @@ public class ChooseUserActivity extends AppCompatActivity {
         chooseUserListView.setItemChecked(2, true);
         chooseUserListView.setAdapter(adapter);
 
+        //getting the name of wholesaler(current)
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("wholesaler").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Name = snapshot.child("name").getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
+
         FirebaseDatabase.getInstance().getReference().child("farmer").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
                 String user = snapshot.child("name").getValue().toString();
-                users.add(user);                                                                    // adds all the users from the database
+                Location = snapshot.child("location").getValue().toString();
+                Log.i("Location", Location);
+                Log.i("Name", user);
+                users.add(user + " (" + Location + ")");                                                                    // adds all the users from the database
                 keys.add(snapshot.getKey());                                                        // gets the key of each user from the database
                 adapter.notifyDataSetChanged();
             }
@@ -77,19 +97,7 @@ public class ChooseUserActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {}
         });
 
-        //getting the name of wholesaler(current)
-        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
-        mDatabase.child("wholesaler").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot snapshot) {
-                    Name = snapshot.child("name").getValue().toString();
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-
-            }
-        });
 
         //adding values to the database
         chooseUserListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
