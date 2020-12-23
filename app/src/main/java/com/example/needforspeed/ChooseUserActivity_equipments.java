@@ -16,7 +16,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +28,7 @@ public class ChooseUserActivity_equipments extends AppCompatActivity {
     ListView equipUserListView;
     ArrayList<String> equipUsers = new ArrayList<>();
     ArrayList<String> equipKeys = new ArrayList<>();
+    String Name;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,11 +70,26 @@ public class ChooseUserActivity_equipments extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {}
         });
 
+        //getting the name of wholesaler(current)
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("wholesaler").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Name = snapshot.child("name").getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         equipUserListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 HashMap<String, String> equipMap = new HashMap<>();
-                equipMap.put("from", FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+                equipMap.put("phone", FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+                equipMap.put("from", Name);
                 equipMap.put("type", getIntent().getStringExtra("Value"));
                 equipMap.put("rate", getIntent().getStringExtra("Amount"));
                 equipMap.put("quantity", getIntent().getStringExtra("Quantity"));

@@ -79,8 +79,8 @@ public class buyingScreen extends AppCompatActivity {
     }
 
     public void buyEquip(View view) {
-        Intent buyEquipments = new Intent(this, farmer_buy_equipments.class);
-        startActivity(buyEquipments);
+        Intent buyrentEquipments = new Intent(this, farmer_buyrent_equip.class);
+        startActivity(buyrentEquipments);
     }
 
     @Override

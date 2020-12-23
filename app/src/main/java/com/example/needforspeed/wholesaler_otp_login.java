@@ -363,8 +363,6 @@ public class wholesaler_otp_login extends AppCompatActivity {
 
     }
 
-
-
     public void next(View view){
 
         String n1 = name.getText().toString();
@@ -394,6 +392,8 @@ public class wholesaler_otp_login extends AppCompatActivity {
             Intent intent8 = new Intent(this, wholesaler_shopping_screen.class);
             startActivity(intent8);
             finish();
+            intent8.putExtra("name", n1);
+
 
         }else {
 

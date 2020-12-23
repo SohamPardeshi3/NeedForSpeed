@@ -25,7 +25,8 @@ public class sellrent_equip extends AppCompatActivity {
     }
 
     public void rentEquipments(View view) {
-
+        Intent rentEquip = new Intent(this, rent_equipments.class);
+        startActivity(rentEquip);
     }
 
 }
