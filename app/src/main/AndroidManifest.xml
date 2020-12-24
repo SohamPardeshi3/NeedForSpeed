@@ -54,7 +54,6 @@
         <activity android:name=".otp_login" />
         <activity android:name=".choose_niche" />
         <activity android:name=".buyingScreen" />
-        <activity android:name=".sellingScreen" />
         <activity android:name=".cottonSeedsActivity" />
         <activity android:name=".placeOrderActivity" />
         <activity android:name=".CartActivity" />

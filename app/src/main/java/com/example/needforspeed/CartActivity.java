@@ -73,7 +73,7 @@ public class CartActivity extends AppCompatActivity {
 
         //demoRef = rootRef.child("Demo");
 
-        demoRef.setValue(FinalListItems);
+        //demoRef.setValue(FinalListItems);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listItems);
 

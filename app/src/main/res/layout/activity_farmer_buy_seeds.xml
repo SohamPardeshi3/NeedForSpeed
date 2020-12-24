@@ -32,11 +32,11 @@
 
     <ListView
         android:id="@+id/seedsListView"
-        android:layout_width="413dp"
-        android:layout_height="626dp"
-        android:layout_marginBottom="62dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="24dp"
         app:layout_constraintBottom_toTopOf="@+id/ProceedToCheckoutbutton4"
         app:layout_constraintEnd_toEndOf="parent"
