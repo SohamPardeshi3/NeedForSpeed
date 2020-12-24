@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".CartActivity_Farmer_Rent"></activity>
+        <activity android:name=".PlaceActivity_wholesaler"></activity>
+        <activity android:name=".CartActivity_Farmer_Rent" />
         <activity android:name=".PreviousOrders_WHolesaler" />
         <activity android:name=".WebActivity" />
         <activity android:name=".ViewRentedItems" />
@@ -83,11 +84,11 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-
     <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
 </manifest>

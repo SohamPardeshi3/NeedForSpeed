@@ -83,7 +83,7 @@ public class ViewRentedItems extends AppCompatActivity {
 
             String finalItem;
 
-            finalItem = "Item: " + getIntent().getStringExtra("type") + "  Number of Days: " + editTextNumber.getText().toString() + "  Rs: " + getIntent().getStringExtra("rate");
+            finalItem = "Item: " + getIntent().getStringExtra("type") + "  Number of Days: " + editTextNumber.getText().toString() + "  Rs: " + getIntent().getStringExtra("rate")+"per day";
 
             Log.i("Type of XYZ", String.valueOf(finalItem));
 

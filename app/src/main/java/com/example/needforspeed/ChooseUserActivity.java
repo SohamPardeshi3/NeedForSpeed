@@ -118,4 +118,12 @@ public class ChooseUserActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void homeScreen(View view){
+
+        Intent home = new Intent(this, wholesaler_shopping_screen.class);
+        startActivity(home);
+
+    }
+
 }

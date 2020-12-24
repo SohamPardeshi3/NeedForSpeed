@@ -73,7 +73,7 @@ public class CartActivity extends AppCompatActivity {
 
         //demoRef = rootRef.child("Demo");
 
-        demoRef.setValue(FinalListItems);
+//        demoRef.setValue(FinalListItems);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listItems);
 
@@ -171,7 +171,7 @@ public class CartActivity extends AppCompatActivity {
                             editor20.commit();
 
                             
-                            Intent order = new Intent(CartActivity.this, placeOrderActivity.class);
+                            Intent order = new Intent(CartActivity.this, PlaceActivity_wholesaler.class);
                             startActivity(order);
 
                         }

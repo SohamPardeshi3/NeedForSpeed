@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="Profile" android:id="@+id/person"></item>
+    <item android:title="My orders" android:id="@+id/orderlist"></item>
+    <item android:title="Check for Updates" android:id="@+id/updatetoApp"></item>
+    <item android:title="Settings" android:id="@+id/settingsforApp"></item>
+
+    <item android:title="Logout" android:id="@+id/log"></item>
+</menu>

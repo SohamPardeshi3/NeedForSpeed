@@ -6,6 +6,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -105,4 +106,12 @@ public class RentUserActivity extends AppCompatActivity {
         });
 
     }
+
+    public void homeScreen(View view){
+
+        Intent home = new Intent(this, wholesaler_shopping_screen.class);
+        startActivity(home);
+
+    }
+
 }

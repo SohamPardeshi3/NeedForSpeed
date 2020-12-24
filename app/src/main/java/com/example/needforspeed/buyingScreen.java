@@ -38,13 +38,13 @@ public class buyingScreen extends AppCompatActivity {
                 Log.i("profile","Profile clicked");
                 Intent profile = new Intent(this, profile.class);
                 startActivity(profile);
-                finish();
+
                 return true;
 
             case R.id.settings:
                 Intent settings = new Intent(this, SettingsActivity.class);
                 startActivity(settings);
-                finish();
+
                 return true;
 
             case R.id.help:
