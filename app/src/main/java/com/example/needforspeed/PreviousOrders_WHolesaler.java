@@ -10,10 +10,12 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,9 +29,11 @@ import java.util.Set;
 
 public class PreviousOrders_WHolesaler extends AppCompatActivity {
 
+    ListView previousListView;
+    ArrayList<String> Users = new ArrayList<>();
+    FirebaseAuth mAuth;
+    ArrayList<DataSnapshot> ListInfo = new ArrayList<>();
 
-
-    TextView listView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,26 +43,50 @@ public class PreviousOrders_WHolesaler extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-       listView = findViewById(R.id.textView16);
+        previousListView= findViewById(R.id.listView);
 
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Users);
+        previousListView.setAdapter(arrayAdapter);
 
+        mAuth = FirebaseAuth.getInstance();
 
-    }
+        FirebaseDatabase.getInstance().getReference().child("wholesaler").child(mAuth.getCurrentUser().getUid()).child("ListItems").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                Users.add(snapshot.getValue().toString());
+                ListInfo.add(snapshot);
+                arrayAdapter.notifyDataSetChanged();
+            }
 
-    public void GetItems(View view) {
-
-
-
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {}
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) { }
+        });
 /*
-        SharedPreferences PreviousOrders = getSharedPreferences("Previous_Orders", 0);
-        Set<String> MyOrders = PreviousOrders.getStringSet("Previous_Orders_List", null);
+        previousListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                DataSnapshot snapshot = ListInfo.get(position);
 
-        MyOrders.remove("Items are: ");
+                Intent intent = new Intent(PreviousOrders_WHolesaler.this, ViewSeeds.class);
 
-        Log.i("Previous Orders: ", String.valueOf(MyOrders));
+                intent.putExtra("from", snapshot.child("from").getValue().toString());
+                intent.putExtra("phone", snapshot.child("phone").getValue().toString());
+                intent.putExtra("type", snapshot.child("type").getValue().toString());
+                intent.putExtra("rate", snapshot.child("rate").getValue().toString());
+                intent.putExtra("quantity", snapshot.child("quantity").getValue().toString());
+                intent.putExtra("description", snapshot.child("description").getValue().toString());
+                intent.putExtra("key", snapshot.getKey());
 
-        String[] listItems = new String[MyOrders.size()];
-        MyOrders.toArray(listItems);
+                startActivity(intent);
+            }
+        });
+
 
  */
 
