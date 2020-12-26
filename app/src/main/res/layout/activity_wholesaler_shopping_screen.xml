@@ -27,30 +27,28 @@
         android:id="@+id/buyImageButton"
         android:layout_width="300dp"
         android:layout_height="200dp"
-        android:layout_marginBottom="28dp"
         android:layout_marginEnd="35dp"
         android:layout_marginStart="35dp"
         android:background="#FFFFFF"
         android:onClick="wholesaleBuy"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sellImageButton"
         app:srcCompat="@drawable/wholesalerbuy" />
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="246dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="149dp"
-        android:layout_marginStart="16dp"
+    <ImageButton
+        android:id="@+id/receivedOrdersButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:onClick="receivedOrders"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:srcCompat="@drawable/chooseopt" />
+        app:layout_constraintTop_toBottomOf="@+id/buyImageButton"
+        app:srcCompat="@drawable/proceed" />
 
     <ImageView
         android:id="@+id/imageView5"
@@ -65,5 +63,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/nfs" />
+
+    <ImageView
+        android:id="@+id/imageView6"
+        android:layout_width="246dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="149dp"
+        android:layout_marginStart="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:srcCompat="@drawable/chooseopt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

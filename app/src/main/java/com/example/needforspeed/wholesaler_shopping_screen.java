@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.net.Inet4Address;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -91,9 +92,11 @@ public class wholesaler_shopping_screen extends AppCompatActivity {
     public void wholesaleBuy(View view) {
         Intent buy = new Intent(this, wholesaler_buy_items.class);
         startActivity(buy);
+    }
 
-
-
+    public void receivedOrders(View view) {
+        Intent receivedorders = new Intent(this, fert_received_orders.class);
+        startActivity(receivedorders);
     }
 
     @Override
