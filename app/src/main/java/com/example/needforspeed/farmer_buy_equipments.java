@@ -76,6 +76,7 @@ public class farmer_buy_equipments extends AppCompatActivity {
                 Intent equipIntent = new Intent(farmer_buy_equipments.this, ViewEquipments.class);
 
                 equipIntent.putExtra("from", snapshot.child("from").getValue().toString());
+                equipIntent.putExtra("phone", snapshot.child("phone").getValue().toString());
                 equipIntent.putExtra("type", snapshot.child("type").getValue().toString());
                 equipIntent.putExtra("rate", snapshot.child("rate").getValue().toString());
                 equipIntent.putExtra("quantity", snapshot.child("quantity").getValue().toString());

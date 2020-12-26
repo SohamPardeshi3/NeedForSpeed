@@ -3,7 +3,9 @@ package com.example.needforspeed;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 public class placeOrderActivity extends AppCompatActivity {
 
@@ -15,4 +17,12 @@ public class placeOrderActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
     }
+
+    public void homeScreen(View view){
+
+        Intent home = new Intent(this, shoppingScreen.class);
+        startActivity(home);
+
+    }
+
 }

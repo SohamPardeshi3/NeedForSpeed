@@ -7,13 +7,11 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
@@ -22,22 +20,18 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Set;
 
-public class wholesaler_buy_items extends AppCompatActivity {
+public class farmer_rent_equipments extends AppCompatActivity {
 
-    ListView selectItemsListView;
-    ArrayList<String> items = new ArrayList<>();
+    ListView rentListView;
+    ArrayList<String> rentedUsers = new ArrayList<>();
     FirebaseAuth mAuth;
-    ArrayList<DataSnapshot> itemInfo = new ArrayList<>();
-
-    Intent nxtIntent;
+    ArrayList<DataSnapshot> rentInfo = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wholesaler_buy_items);
+        setContentView(R.layout.activity_farmer_rent_equipments);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -49,19 +43,19 @@ public class wholesaler_buy_items extends AppCompatActivity {
                 .setPositiveButton("Okay", null)
                 .show();
 
-        selectItemsListView = findViewById(R.id.selectItemsListView);
+        rentListView = findViewById(R.id.rentListView);
 
-        ArrayAdapter<String> itemAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-        selectItemsListView.setAdapter(itemAdapter);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, rentedUsers);
+        rentListView.setAdapter(arrayAdapter);
 
         mAuth = FirebaseAuth.getInstance();
 
-        FirebaseDatabase.getInstance().getReference().child("wholesaler").child(mAuth.getCurrentUser().getUid()).child("items").addChildEventListener(new ChildEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("farmer").child(mAuth.getCurrentUser().getUid()).child("rentedItems").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                items.add(snapshot.child("type").getValue().toString());
-                itemInfo.add(snapshot);
-                itemAdapter.notifyDataSetChanged();
+                rentedUsers.add(snapshot.child("type").getValue().toString());
+                rentInfo.add(snapshot);
+                arrayAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -74,33 +68,28 @@ public class wholesaler_buy_items extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) { }
         });
 
-        selectItemsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        rentListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                DataSnapshot snapshot = itemInfo.get(position);
+                DataSnapshot snapshot = rentInfo.get(position);
 
-                Intent intent = new Intent(wholesaler_buy_items.this, ViewItems.class);
+                Intent intent = new Intent(farmer_rent_equipments.this, ViewRentedItems.class);     
 
                 intent.putExtra("from", snapshot.child("from").getValue().toString());
                 intent.putExtra("phone", snapshot.child("phone").getValue().toString());
                 intent.putExtra("type", snapshot.child("type").getValue().toString());
                 intent.putExtra("rate", snapshot.child("rate").getValue().toString());
-                intent.putExtra("quantity", snapshot.child("quantity").getValue().toString());
                 intent.putExtra("key", snapshot.getKey());
 
                 startActivity(intent);
             }
         });
-
-
-
     }
 
-    public void nextBuyActivity(View view){
-
-        nxtIntent = new Intent(this, CartActivity.class);
-        startActivity(nxtIntent);
+    public void proceed(View view) {
+        //add code here
+        Intent checkOut = new Intent(this, CartActivity_Farmer_Rent.class);
+        startActivity(checkOut);
 
     }
-
 }

@@ -26,12 +26,12 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
-public class CartActivity_Farmer_Euipments extends AppCompatActivity {
+public class CartActivity_Farmer_Rent extends AppCompatActivity {
 
     EditText addressEditText;
 
     ListView itemsCheckList;
-    Set<String> EquipItemsSet;
+    Set<String> RentEquipItemSet;
 
 
     String toRemove;
@@ -42,7 +42,7 @@ public class CartActivity_Farmer_Euipments extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cart__farmer__euipments);
+        setContentView(R.layout.activity_cart__farmer__rent);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -57,22 +57,21 @@ public class CartActivity_Farmer_Euipments extends AppCompatActivity {
         addressEditText = findViewById(R.id.addressEditText);
         itemsCheckList = findViewById(R.id.listView);
 
+        SharedPreferences hashSetValue = getSharedPreferences("Rent_Equip_hashSet_value", 0);
+        RentEquipItemSet = hashSetValue.getStringSet("Rent_Equip_Final_List", null);
 
-        SharedPreferences hashSetValue6 = getSharedPreferences("Equip_hashSet_value", 0);
-        EquipItemsSet = hashSetValue6.getStringSet("Equip_Final_List", null);
+        Log.i("Equipment List", String.valueOf(RentEquipItemSet));
 
-        Log.i("Equipment List", String.valueOf(EquipItemsSet));
+        RentEquipItemSet.remove("Items are: ");
 
-        EquipItemsSet.remove("Items are: ");
-
-        listItems = new String[EquipItemsSet.size()];
-        EquipItemsSet.toArray(listItems);
-
+        listItems = new String[RentEquipItemSet.size()];
+        RentEquipItemSet.toArray(listItems);
 
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listItems);
 
         itemsCheckList.setAdapter(arrayAdapter);
+
 
         itemsCheckList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
@@ -81,13 +80,14 @@ public class CartActivity_Farmer_Euipments extends AppCompatActivity {
                 toRemove = arrayAdapter.getItem(position);
                 listItems[position] = "Removed";
 
-                EquipItemsSet.remove(toRemove);
-                Log.i("After Seeds Item value", String.valueOf(EquipItemsSet));
+                RentEquipItemSet.remove(toRemove);
+                Log.i("After Seeds Item value", String.valueOf(RentEquipItemSet));
 
-                SharedPreferences hashSetValue6 = getSharedPreferences("Equip_hashSet_value", 0);
-                SharedPreferences.Editor editor16 = hashSetValue6.edit();
-                editor16.putStringSet("Equip_Final_List", EquipItemsSet);
-                editor16.commit();
+                SharedPreferences hashSetValue21 = getSharedPreferences("Rent_Equip_hashSet_value", 0);
+                SharedPreferences.Editor editor21 = hashSetValue21.edit();
+                editor21.putStringSet("Rent_Equip_Final_List", RentEquipItemSet);
+                editor21.commit();
+
 
                 arrayAdapter.notifyDataSetChanged();
                 return true;
@@ -103,10 +103,10 @@ public class CartActivity_Farmer_Euipments extends AppCompatActivity {
 
     public void placeOrder(View view) {
 
-        SharedPreferences hashSetValue6 = getSharedPreferences("Equip_hashSet_value", 0);
-        Set<String> EquipItemsSet2 = hashSetValue6.getStringSet("Equip_Final_List", null);
+        SharedPreferences hashSetValue = getSharedPreferences("Rent_Equip_hashSet_value", 0);
+        Set<String> RentEquipItemSet2 = hashSetValue.getStringSet("Rent_Equip_Final_List", null);
 
-        if (!addressEditText.getText().toString().isEmpty() && !EquipItemsSet2.isEmpty()) {
+        if (!addressEditText.getText().toString().isEmpty() && !RentEquipItemSet2.isEmpty()) {
 
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
@@ -126,13 +126,13 @@ public class CartActivity_Farmer_Euipments extends AppCompatActivity {
  */
                             List<String> FinalListItems = new ArrayList<>();
 
-                            FinalListItems.addAll(EquipItemsSet2);
+                            FinalListItems.addAll(RentEquipItemSet2);
 
                             FinalListItems.remove("Items are: ");
 
                             reference.push().setValue(FinalListItems);
 
-                            Intent order = new Intent(CartActivity_Farmer_Euipments.this, placeOrderActivity.class);
+                            Intent order = new Intent(CartActivity_Farmer_Rent.this, placeOrderActivity.class);
                             startActivity(order);
 
                         }
@@ -159,6 +159,5 @@ public class CartActivity_Farmer_Euipments extends AppCompatActivity {
         startActivity(getIntent());
 
     }
-
 
 }

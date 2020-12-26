@@ -38,13 +38,13 @@ public class buyingScreen extends AppCompatActivity {
                 Log.i("profile","Profile clicked");
                 Intent profile = new Intent(this, profile.class);
                 startActivity(profile);
-                finish();
+
                 return true;
 
             case R.id.settings:
                 Intent settings = new Intent(this, SettingsActivity.class);
                 startActivity(settings);
-                finish();
+
                 return true;
 
             case R.id.help:
@@ -79,8 +79,8 @@ public class buyingScreen extends AppCompatActivity {
     }
 
     public void buyEquip(View view) {
-        Intent buyEquipments = new Intent(this, farmer_buy_equipments.class);
-        startActivity(buyEquipments);
+        Intent buyrentEquipments = new Intent(this, farmer_buyrent_equip.class);
+        startActivity(buyrentEquipments);
     }
 
     @Override

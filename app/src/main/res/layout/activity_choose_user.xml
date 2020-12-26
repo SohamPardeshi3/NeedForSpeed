@@ -6,6 +6,19 @@
     android:layout_height="match_parent"
     tools:context=".ChooseUserActivity">
 
+
+    <Button
+        android:id="@+id/button10"
+        style="@style/Widget.AppCompat.Button.ButtonBar.AlertDialog"
+        android:layout_width="348dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="20dp"
+        android:onClick="homeScreen"
+        android:text="Back to HomeScreen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chooseUserListView" />
+
     <ImageView
         android:id="@+id/imageView14"
         android:layout_width="304dp"
@@ -15,6 +28,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/nfs" />
+
 
     <TextView
         android:id="@+id/textView3"

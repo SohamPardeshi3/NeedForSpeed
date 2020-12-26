@@ -52,6 +52,11 @@ public class shoppingScreen extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "You're already up to date",Toast.LENGTH_SHORT).show();
                 return true;
 
+            case R.id.myOrder:
+                Intent preOrder = new Intent(this, Previous_orders_Farmer.class);
+                startActivity(preOrder);
+                return true;
+
             case R.id.settings:
                 Intent settings = new Intent(this, SettingsActivity.class);
                 startActivity(settings);
@@ -133,11 +138,20 @@ public class shoppingScreen extends AppCompatActivity {
         editor16.putStringSet("Equip_Final_List", EquipItemsSet);
         editor16.commit();
 
+        Set<String> RentEquipItemsSet = new HashSet<>();
+
+        RentEquipItemsSet.add("Items are: ");
+
+        SharedPreferences hashSetValue21 = getSharedPreferences("Rent_Equip_hashSet_value", 0);
+        SharedPreferences.Editor editor21 = hashSetValue21.edit();
+        editor21.putStringSet("Rent_Equip_Final_List", RentEquipItemsSet);
+        editor21.commit();
+
     }
 
     public void sellingScreen(View view) {                                  //onClick = sellingScreen
         Log.i("Button", "Sell button clicked");
-        Intent intent = new Intent(this, sellingScreen.class);
+        Intent intent = new Intent(this, additems.class);
         startActivity(intent);
     }
 

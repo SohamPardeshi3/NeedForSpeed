@@ -8,15 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -24,23 +21,21 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
-public class ChooseUserActivity extends AppCompatActivity {
+public class RentUserActivity extends AppCompatActivity {
 
-    ListView chooseUserListView;
-    ArrayList<String> users = new ArrayList<>();
-    ArrayList<String> keys = new ArrayList<>();
+    ListView rentUserListView;
+    ArrayList<String> rentUsers = new ArrayList<>();
+    ArrayList<String> rentKeys = new ArrayList<>();
     String Name;
     String Location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_choose_user);
+        setContentView(R.layout.activity_rent_user);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
@@ -52,12 +47,32 @@ public class ChooseUserActivity extends AppCompatActivity {
                 .setPositiveButton("Okay", null)
                 .show();
 
-        chooseUserListView = findViewById(R.id.chooseUserListView);
+        rentUserListView = findViewById(R.id.rentUserListView);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_multiple_choice, users);
-        chooseUserListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        chooseUserListView.setItemChecked(2, true);
-        chooseUserListView.setAdapter(adapter);
+        ArrayAdapter<String> rentAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_multiple_choice, rentUsers);
+        rentUserListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        rentUserListView.setItemChecked(2, true);
+        rentUserListView.setAdapter(rentAdapter);
+
+        FirebaseDatabase.getInstance().getReference().child("farmer").addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                String user = snapshot.child("name").getValue().toString();
+                Location = snapshot.child("location").getValue().toString();
+                rentUsers.add(user + " (" + Location + ")");                                                                    // adds all the users from the database
+                rentKeys.add(snapshot.getKey());                                                        // gets the key of each user from the database
+                rentAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {}
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {}
+        });
 
         //getting the name of wholesaler(current)
         DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
@@ -73,50 +88,23 @@ public class ChooseUserActivity extends AppCompatActivity {
             }
         });
 
-
-        FirebaseDatabase.getInstance().getReference().child("farmer").addChildEventListener(new ChildEventListener() {
-            @Override
-            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                String user = snapshot.child("name").getValue().toString();
-                Location = snapshot.child("location").getValue().toString();
-                Log.i("Location", Location);
-                Log.i("Name", user);
-                users.add(user + " (" + Location + ")");                                                                    // adds all the users from the database
-                keys.add(snapshot.getKey());                                                        // gets the key of each user from the database
-                adapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
-            @Override
-            public void onChildRemoved(@NonNull DataSnapshot snapshot) {}
-            @Override
-            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {}
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {}
-        });
-
-
-
         //adding values to the database
-        chooseUserListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        rentUserListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                HashMap<String, String> fertMap = new HashMap<>();
-                fertMap.put("phone", FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
-                fertMap.put("from", Name);
-                fertMap.put("type", getIntent().getStringExtra("Value"));
-                fertMap.put("rate", getIntent().getStringExtra("Amount"));
-                fertMap.put("quantity", getIntent().getStringExtra("Quantity"));
-                fertMap.put("description", getIntent().getStringExtra("Description"));
+                HashMap<String, String> rentMap = new HashMap<>();
+                rentMap.put("phone", FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+                rentMap.put("from", Name);
+                rentMap.put("type", getIntent().getStringExtra("Value"));
+                rentMap.put("rate", getIntent().getStringExtra("Amount"));
 
-                FirebaseDatabase.getInstance().getReference().child("farmer").child(keys.get(position)).child("fertilizers").push().setValue(fertMap);          // item gets add to the database when a user is selected
+                FirebaseDatabase.getInstance().getReference().child("farmer").child(rentKeys.get(position)).child("rentedItems").push().setValue(rentMap);          // item gets add to the database when a user is selected
 
                 // add a disclaimer here
 
             }
         });
+
     }
 
     public void homeScreen(View view){

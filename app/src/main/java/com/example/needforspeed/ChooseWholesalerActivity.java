@@ -6,6 +6,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,7 +17,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +29,8 @@ public class ChooseWholesalerActivity extends AppCompatActivity {
     ListView chooseWholesalerListView;
     ArrayList<String> wholesalers = new ArrayList<>();
     ArrayList<String> wholesalerKeys = new ArrayList<>();
+    String Name;
+    String Location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,7 +58,8 @@ public class ChooseWholesalerActivity extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 String user = snapshot.child("name").getValue().toString();
-                wholesalers.add(user);                                                                    // adds all the users from the database
+                Location = snapshot.child("location").getValue().toString();
+                wholesalers.add(user + " (" + Location + ")");                                                                    // adds all the users from the database
                 wholesalerKeys.add(snapshot.getKey());                                                        // gets the key of each user from the database
                 wholesalerArrayAdapter.notifyDataSetChanged();
             }
@@ -67,11 +73,26 @@ public class ChooseWholesalerActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError error) {}
         });
 
+        //getting the name of wholesaler(current)
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("farmer").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Name = snapshot.child("name").getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
         chooseWholesalerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 HashMap<String, String> wholesalerMap = new HashMap<>();
-                wholesalerMap.put("from", FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+                wholesalerMap.put("phone", FirebaseAuth.getInstance().getCurrentUser().getPhoneNumber());
+                wholesalerMap.put("from", Name);
                 wholesalerMap.put("type", getIntent().getStringExtra("Value"));
                 wholesalerMap.put("rate", getIntent().getStringExtra("Amount"));
                 wholesalerMap.put("quantity", getIntent().getStringExtra("Quantity"));
@@ -83,4 +104,12 @@ public class ChooseWholesalerActivity extends AppCompatActivity {
         });
 
     }
+
+    public void homeScreen(View view){
+
+        Intent home = new Intent(this, shoppingScreen.class);
+        startActivity(home);
+
+    }
+
 }

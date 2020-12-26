@@ -7,22 +7,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-public class sellingScreen extends AppCompatActivity {
+public class PlaceActivity_wholesaler extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_selling_screen);
-
+        setContentView(R.layout.activity_place_wholesaler);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
     }
 
-    public void next(View view){
+    public void homeScreen(View view){
 
-        Intent intent = new Intent(this, additems.class);
-        startActivity(intent);
+        Intent home = new Intent(this, wholesaler_shopping_screen.class);
+        startActivity(home);
 
     }
+
+
 }

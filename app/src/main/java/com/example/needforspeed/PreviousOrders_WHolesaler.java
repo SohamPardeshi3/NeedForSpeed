@@ -3,65 +3,59 @@ package com.example.needforspeed;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-public class wholesaler_buy_items extends AppCompatActivity {
+public class PreviousOrders_WHolesaler extends AppCompatActivity {
 
-    ListView selectItemsListView;
-    ArrayList<String> items = new ArrayList<>();
+    ListView previousListView;
+    ArrayList<String> Users = new ArrayList<>();
     FirebaseAuth mAuth;
-    ArrayList<DataSnapshot> itemInfo = new ArrayList<>();
+    ArrayList<DataSnapshot> ListInfo = new ArrayList<>();
 
-    Intent nxtIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_wholesaler_buy_items);
+        setContentView(R.layout.activity_previous_orders__w_holesaler);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        previousListView= findViewById(R.id.listView);
 
-        builder.setTitle("Disclaimer")
-                .setMessage("Tap on the Item to know more about it or to add it in the cart!")
-                .setPositiveButton("Okay", null)
-                .show();
-
-        selectItemsListView = findViewById(R.id.selectItemsListView);
-
-        ArrayAdapter<String> itemAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, items);
-        selectItemsListView.setAdapter(itemAdapter);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, Users);
+        previousListView.setAdapter(arrayAdapter);
 
         mAuth = FirebaseAuth.getInstance();
 
-        FirebaseDatabase.getInstance().getReference().child("wholesaler").child(mAuth.getCurrentUser().getUid()).child("items").addChildEventListener(new ChildEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("wholesaler").child(mAuth.getCurrentUser().getUid()).child("ListItems").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-                items.add(snapshot.child("type").getValue().toString());
-                itemInfo.add(snapshot);
-                itemAdapter.notifyDataSetChanged();
+                Users.add(snapshot.getValue().toString());
+                ListInfo.add(snapshot);
+                arrayAdapter.notifyDataSetChanged();
             }
 
             @Override
@@ -73,19 +67,20 @@ public class wholesaler_buy_items extends AppCompatActivity {
             @Override
             public void onCancelled(@NonNull DatabaseError error) { }
         });
-
-        selectItemsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+/*
+        previousListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                DataSnapshot snapshot = itemInfo.get(position);
+                DataSnapshot snapshot = ListInfo.get(position);
 
-                Intent intent = new Intent(wholesaler_buy_items.this, ViewItems.class);
+                Intent intent = new Intent(PreviousOrders_WHolesaler.this, ViewSeeds.class);
 
                 intent.putExtra("from", snapshot.child("from").getValue().toString());
                 intent.putExtra("phone", snapshot.child("phone").getValue().toString());
                 intent.putExtra("type", snapshot.child("type").getValue().toString());
                 intent.putExtra("rate", snapshot.child("rate").getValue().toString());
                 intent.putExtra("quantity", snapshot.child("quantity").getValue().toString());
+                intent.putExtra("description", snapshot.child("description").getValue().toString());
                 intent.putExtra("key", snapshot.getKey());
 
                 startActivity(intent);
@@ -93,13 +88,7 @@ public class wholesaler_buy_items extends AppCompatActivity {
         });
 
 
-
-    }
-
-    public void nextBuyActivity(View view){
-
-        nxtIntent = new Intent(this, CartActivity.class);
-        startActivity(nxtIntent);
+ */
 
     }
 
