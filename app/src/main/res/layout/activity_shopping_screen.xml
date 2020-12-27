@@ -13,32 +13,42 @@
         android:layout_height="200dp"
         android:layout_marginEnd="35dp"
         android:layout_marginStart="35dp"
-        android:layout_marginTop="32dp"
         android:background="#FFFFFF"
         android:onClick="sellingScreen"
-        android:scaleType="centerCrop"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.658"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView6"
-        app:srcCompat="@drawable/sell" />
+        app:srcCompat="@drawable/sitems" />
 
     <ImageButton
         android:id="@+id/buyImageButton"
         android:layout_width="300dp"
         android:layout_height="200dp"
-        android:layout_marginBottom="28dp"
         android:layout_marginEnd="35dp"
         android:layout_marginStart="35dp"
         android:background="#FFFFFF"
         android:onClick="buyingScreen"
-        android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:scaleType="fitCenter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/sellImageButton"
-        app:srcCompat="@drawable/buy" />
+        app:srcCompat="@drawable/rbuyitems" />
+
+    <ImageButton
+        android:id="@+id/receivedOrdersButton"
+        android:layout_width="300dp"
+        android:layout_height="200dp"
+        android:backgroundTint="#FFFFFF"
+        android:onClick="orders"
+        android:scaleType="fitCenter"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buyImageButton"
+        app:srcCompat="@drawable/rorders" />
 
     <ImageView
         android:id="@+id/imageView6"

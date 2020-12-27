@@ -12,6 +12,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,7 +32,7 @@ public class ViewRentedItems extends AppCompatActivity {
     //TextView descEquipTextView;
 
     EditText editTextNumber;
-    String value, checkvalue;
+    String value, checkvalue, Name, Location;
     int val1,val2;
 
     Set<String> set = new HashSet<>();
@@ -54,6 +62,20 @@ public class ViewRentedItems extends AppCompatActivity {
         //quantityEquipTextView.setText(getIntent().getStringExtra("quantity"));
         rateEquipTextView.setText(getIntent().getStringExtra("rate"));
         //descEquipTextView.setText(getIntent().getStringExtra("description"));
+
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("farmer").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Name = snapshot.child("name").getValue().toString();
+                Location = snapshot.child("location").getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
@@ -118,6 +140,13 @@ public class ViewRentedItems extends AppCompatActivity {
 
     public void DoneRef(View view){
 
+        HashMap<String, String> wrEquipOrdersMap = new HashMap<>();
+        wrEquipOrdersMap.put("buyer", Name);
+        wrEquipOrdersMap.put("days", editTextNumber.getText().toString());
+        wrEquipOrdersMap.put("type", getIntent().getStringExtra("type"));
+        wrEquipOrdersMap.put("seller", getIntent().getStringExtra("from"));
+        wrEquipOrdersMap.put("location", Location);
+        FirebaseDatabase.getInstance().getReference().child("wholesalerOrders").child("equipRentOrders").push().setValue(wrEquipOrdersMap);
 
         Intent intent = new Intent(this, farmer_rent_equipments.class);
         startActivity(intent);

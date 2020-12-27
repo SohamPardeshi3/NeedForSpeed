@@ -12,6 +12,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,10 +32,11 @@ public class ViewFertilizers extends AppCompatActivity {
     TextView descTextView;
 
     EditText editTextNumber;
-    String value, checkvalue;
+    String value, checkvalue, Name, Location;
     int val1,val2;
 
     Set<String> set = new HashSet<>();
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +67,20 @@ public class ViewFertilizers extends AppCompatActivity {
         quantityTextView.setText(getIntent().getStringExtra("quantity"));
         rateTextView.setText(getIntent().getStringExtra("rate"));
         descTextView.setText(getIntent().getStringExtra("description"));
+
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("farmer").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Name = snapshot.child("name").getValue().toString();
+                Location = snapshot.child("location").getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
 
     }
 
@@ -94,8 +117,7 @@ public class ViewFertilizers extends AppCompatActivity {
 
                 Log.i("Type of XYZ", String.valueOf(finalItem));
 
-
-                set.add(finalItem);
+            set.add(finalItem);
 
 
                 Log.i("HashSet Value", String.valueOf(set));
@@ -121,6 +143,14 @@ public class ViewFertilizers extends AppCompatActivity {
     }
 
     public void DoneRef(View view){
+
+        HashMap<String, String> wordersMap = new HashMap<>();
+        wordersMap.put("buyer", Name);
+        wordersMap.put("quantity", checkvalue);
+        wordersMap.put("type", getIntent().getStringExtra("type"));
+        wordersMap.put("seller", getIntent().getStringExtra("from"));
+        wordersMap.put("location", Location);
+        FirebaseDatabase.getInstance().getReference().child("wholesalerOrders").child("fertOrders").push().setValue(wordersMap);
 
 
         Intent intent = new Intent(this, farmer_buy_fertilizers.class);

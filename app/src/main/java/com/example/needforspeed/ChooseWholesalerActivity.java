@@ -43,7 +43,7 @@ public class ChooseWholesalerActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setTitle("Disclaimer")
-                .setMessage("Choose the user to whom you want make this item available!")
+                .setMessage("Choose the user to whom you want to make this item available!")
                 .setPositiveButton("Okay", null)
                 .show();
 
