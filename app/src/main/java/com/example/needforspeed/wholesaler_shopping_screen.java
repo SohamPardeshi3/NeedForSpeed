@@ -95,7 +95,7 @@ public class wholesaler_shopping_screen extends AppCompatActivity {
     }
 
     public void receivedOrders(View view) {
-        Intent receivedorders = new Intent(this, fert_received_orders.class);
+        Intent receivedorders = new Intent(this, Received_Orders_Wholesaler.class);
         startActivity(receivedorders);
     }
 

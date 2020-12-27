@@ -23,39 +23,39 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
-public class fert_received_orders extends AppCompatActivity {
+public class seed_received_orders extends AppCompatActivity {
 
-    ListView fertOrdersListView;
-    ArrayList<String> buyers = new ArrayList<>();
-    String Location, Buyer, Quantity, Type;
-    ArrayList<DataSnapshot> info = new ArrayList<>();
+    ListView seedsOrdersListView;
+    ArrayList<String> seedbuyers = new ArrayList<>();
+    String location, buyer, quantity, type;
+    ArrayList<DataSnapshot> seedInfo = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fert_received_orders);
+        setContentView(R.layout.activity_seed_received_orders);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
-        fertOrdersListView = findViewById(R.id.fertOrdersListView);
+        seedsOrdersListView = findViewById(R.id.seedsOrdersListView);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, buyers);
-        fertOrdersListView.setAdapter(adapter);
+        ArrayAdapter<String> seedAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, seedbuyers);
+        seedsOrdersListView.setAdapter(seedAdapter);
 
-        FirebaseDatabase.getInstance().getReference().child("wholesalerOrders").child("fertOrders").addChildEventListener(new ChildEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("wholesalerOrders").child("seedOrders").addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-                Quantity = snapshot.child("quantity").getValue().toString();
-                Buyer = snapshot.child("buyer").getValue().toString();
-                Location = snapshot.child("location").getValue().toString();
-                Type = snapshot.child("type").getValue().toString();
-                String finalItem = Buyer + " (" + Location + ") "
-                        + " [" + Type + "]";
-                buyers.add(finalItem);
-                info.add(snapshot);
-                adapter.notifyDataSetChanged();
+                quantity = snapshot.child("quantity").getValue().toString();
+                buyer = snapshot.child("buyer").getValue().toString();
+                location = snapshot.child("location").getValue().toString();
+                type = snapshot.child("type").getValue().toString();
+                String finalItem = buyer + " (" + location + ") "
+                        + " [" + type + "]";
+                seedbuyers.add(finalItem);
+                seedInfo.add(snapshot);
+                seedAdapter.notifyDataSetChanged();
 
             }
 
@@ -80,16 +80,16 @@ public class fert_received_orders extends AppCompatActivity {
             }
         });
 
-        fertOrdersListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        seedsOrdersListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                DataSnapshot snapshot = info.get(position);
+                DataSnapshot snapshot = seedInfo.get(position);
 
-                Intent fertOrders = new Intent(fert_received_orders.this, fert_received_orders_2.class);
-                fertOrders.putExtra("type", snapshot.child("type").getValue().toString());
-                fertOrders.putExtra("quantity", snapshot.child("quantity").getValue().toString());
-                fertOrders.putExtra("key", snapshot.getKey());
-                startActivity(fertOrders);
+                Intent seedOrders = new Intent(seed_received_orders.this, seed_received_orders_2.class);
+                seedOrders.putExtra("type", snapshot.child("type").getValue().toString());
+                seedOrders.putExtra("quantity", snapshot.child("quantity").getValue().toString());
+                seedOrders.putExtra("key", snapshot.getKey());
+                startActivity(seedOrders);
             }
         });
     }

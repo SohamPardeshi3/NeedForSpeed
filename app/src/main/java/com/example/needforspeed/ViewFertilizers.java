@@ -113,17 +113,7 @@ public class ViewFertilizers extends AppCompatActivity {
 
             Log.i("Type of XYZ", String.valueOf(finalItem));
 
-
-
             set.add(finalItem);
-
-
-
-
-
-
-
-
 
             Log.i("HashSet Value", String.valueOf(set));
 
@@ -131,9 +121,6 @@ public class ViewFertilizers extends AppCompatActivity {
             SharedPreferences.Editor editor15 = hashSetValue5.edit();
             editor15.putStringSet("Fert_Final_List", set);
             editor15.commit();
-
-
-
 
             Toast.makeText(this, "Item Added!", Toast.LENGTH_SHORT).show();
 

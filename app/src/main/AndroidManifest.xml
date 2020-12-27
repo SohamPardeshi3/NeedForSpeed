@@ -9,7 +9,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".fert_received_orders_2"></activity>
+        <activity android:name=".rent_received_orders_2"></activity>
+        <activity android:name=".rent_received_orders" />
+        <activity android:name=".equip_received_orders_2" />
+        <activity android:name=".equip_received_orders" />
+        <activity android:name=".equip_rent_received_orders" />
+        <activity android:name=".seed_received_orders_2" />
+        <activity android:name=".seed_received_orders" />
+        <activity android:name=".Received_Orders_Wholesaler" />
+        <activity android:name=".fert_received_orders_2" />
         <activity android:name=".fert_received_orders" />
         <activity android:name=".CartActivity_Farmer_Rent" />
         <activity android:name=".PreviousOrders_WHolesaler" />
@@ -84,11 +92,11 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
     </application>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.SEND_SMS" />
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
 </manifest>

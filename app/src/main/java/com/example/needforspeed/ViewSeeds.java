@@ -12,8 +12,16 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -27,7 +35,7 @@ public class ViewSeeds extends AppCompatActivity {
     TextView descSeedTextView;
 
     EditText editTextNumber;
-    String value, checkvalue;
+    String value, checkvalue, Location, Name;
     int val1,val2;
 
     Set<String> set = new HashSet<>();
@@ -57,6 +65,20 @@ public class ViewSeeds extends AppCompatActivity {
         quantitySeedTextView.setText(getIntent().getStringExtra("quantity"));
         rateSeedTextView.setText(getIntent().getStringExtra("rate"));
         descSeedTextView.setText(getIntent().getStringExtra("description"));
+
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("farmer").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Name = snapshot.child("name").getValue().toString();
+                Location = snapshot.child("location").getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
     }
 
 
@@ -125,6 +147,13 @@ public class ViewSeeds extends AppCompatActivity {
 
     public void DoneRef(View view){
 
+        HashMap<String, String> wSeedsOrdersMap = new HashMap<>();
+        wSeedsOrdersMap.put("buyer", Name);
+        wSeedsOrdersMap.put("quantity", checkvalue);
+        wSeedsOrdersMap.put("type", getIntent().getStringExtra("type"));
+        wSeedsOrdersMap.put("seller", getIntent().getStringExtra("from"));
+        wSeedsOrdersMap.put("location", Location);
+        FirebaseDatabase.getInstance().getReference().child("wholesalerOrders").child("seedOrders").push().setValue(wSeedsOrdersMap);
 
         Intent intent = new Intent(this, farmer_buy_seeds.class);
         startActivity(intent);
