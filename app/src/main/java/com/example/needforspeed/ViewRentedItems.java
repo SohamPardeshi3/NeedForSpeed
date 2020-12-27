@@ -73,50 +73,44 @@ public class ViewRentedItems extends AppCompatActivity {
 
         val2 = Integer.valueOf(checkvalue);
 
+        if (checkvalue.isEmpty()){
+            Toast.makeText(this, "Please enter number of days!", Toast.LENGTH_SHORT).show();
+        }else {
 
-        if (val2 <= 140) {
+            if (val2 <= 140) {
 
-            set.addAll(RentEquipItemSet);
+                set.addAll(RentEquipItemSet);
 
-            //Collections.reverse(asList);
-            //Log.i("Reversed List Value", String.valueOf(asList));
+                //Collections.reverse(asList);
+                //Log.i("Reversed List Value", String.valueOf(asList));
 
-            String finalItem;
+                String finalItem;
 
-            finalItem = "Item: " + getIntent().getStringExtra("type") + "  Number of Days: " + editTextNumber.getText().toString() + "  Rs: " + getIntent().getStringExtra("rate")+"per day";
+                finalItem = "Item: " + getIntent().getStringExtra("type") + "  Number of Days: " + editTextNumber.getText().toString() + "  Rs: " + getIntent().getStringExtra("rate") + "per day";
 
-            Log.i("Type of XYZ", String.valueOf(finalItem));
-
-
-
-            set.add(finalItem);
-
+                Log.i("Type of XYZ", String.valueOf(finalItem));
 
 
+                set.add(finalItem);
 
 
+                Log.i("HashSet Value", String.valueOf(set));
+
+                SharedPreferences hashSetValue21 = getSharedPreferences("Rent_Equip_hashSet_value", 0);
+                SharedPreferences.Editor editor21 = hashSetValue21.edit();
+                editor21.putStringSet("Rent_Equip_Final_List", set);
+                editor21.commit();
 
 
+                Toast.makeText(this, "Item Added!", Toast.LENGTH_SHORT).show();
 
+            } else {
 
-            Log.i("HashSet Value", String.valueOf(set));
+                Toast.makeText(this, "Enter Valid amount of days!", Toast.LENGTH_SHORT).show();
 
-            SharedPreferences hashSetValue21 = getSharedPreferences("Rent_Equip_hashSet_value", 0);
-            SharedPreferences.Editor editor21 = hashSetValue21.edit();
-            editor21.putStringSet("Rent_Equip_Final_List", set);
-            editor21.commit();
-
-
-
-
-            Toast.makeText(this, "Item Added!", Toast.LENGTH_SHORT).show();
-
-        } else {
-
-            Toast.makeText(this, "Enter Valid amount of days!", Toast.LENGTH_SHORT).show();
+            }
 
         }
-
 
 
     }

@@ -70,9 +70,11 @@ public class ViewItems extends AppCompatActivity {
         Log.i("Value of val1", String.valueOf(val1));
         Log.i("Value of val2", String.valueOf(val2));
 
-
         val2 = Integer.valueOf(checkvalue);
 
+        if (checkvalue.isEmpty()){
+            Toast.makeText(this, "Please enter quantity!", Toast.LENGTH_SHORT).show();
+        }else {
 
             if (val2 <= val1) {
 
@@ -101,6 +103,8 @@ public class ViewItems extends AppCompatActivity {
                 Toast.makeText(this, "Enter less quantity!", Toast.LENGTH_SHORT).show();
 
             }
+
+        }
 
         }
 
