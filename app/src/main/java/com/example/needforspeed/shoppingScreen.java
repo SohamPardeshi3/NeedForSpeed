@@ -156,6 +156,11 @@ public class shoppingScreen extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void orders(View view) {
+        Intent rorders = new Intent(this, items_received_orders.class);
+        startActivity(rorders);
+    }
+
     @Override
     public void onBackPressed()
     {
