@@ -19,6 +19,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import com.google.android.gms.common.data.DataBufferRef;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -98,46 +106,42 @@ public class ViewSeeds extends AppCompatActivity {
         val2 = Integer.valueOf(checkvalue);
 
 
-        if (val2 <= val1) {
+        if (checkvalue.isEmpty()){
+            Toast.makeText(this, "Please enter quantity!", Toast.LENGTH_SHORT).show();
+        }else {
 
-            set.addAll(SeedsItemSet);
+            if (val2 <= val1) {
 
-            //Collections.reverse(asList);
-            //Log.i("Reversed List Value", String.valueOf(asList));
+                set.addAll(SeedsItemSet);
 
-            String finalItem;
+                //Collections.reverse(asList);
+                //Log.i("Reversed List Value", String.valueOf(asList));
 
-            finalItem = "Item: " + getIntent().getStringExtra("type") + "  Quantity: " + editTextNumber.getText().toString() + "  Rs: " + getIntent().getStringExtra("rate");
+                String finalItem;
 
-            Log.i("Type of XYZ", String.valueOf(finalItem));
+                finalItem = "Item: " + getIntent().getStringExtra("type") + "  Quantity: " + editTextNumber.getText().toString() + "  Rs: " + getIntent().getStringExtra("rate");
 
-
-
-            set.add(finalItem);
-
-
+                Log.i("Type of XYZ", String.valueOf(finalItem));
 
 
+                set.add(finalItem);
 
 
+                Log.i("HashSet Value", String.valueOf(set));
+
+                SharedPreferences hashSetValue4 = getSharedPreferences("Seeds_value", 0);
+                SharedPreferences.Editor editor14 = hashSetValue4.edit();
+                editor14.putStringSet("Seeds_Final_List", set);
+                editor14.commit();
 
 
+                Toast.makeText(this, "Item Added!", Toast.LENGTH_SHORT).show();
 
-            Log.i("HashSet Value", String.valueOf(set));
+            } else {
 
-            SharedPreferences hashSetValue4 = getSharedPreferences("Seeds_value", 0);
-            SharedPreferences.Editor editor14 = hashSetValue4.edit();
-            editor14.putStringSet("Seeds_Final_List", set);
-            editor14.commit();
+                Toast.makeText(this, "Enter less quantity!", Toast.LENGTH_SHORT).show();
 
-
-
-
-            Toast.makeText(this, "Item Added!", Toast.LENGTH_SHORT).show();
-
-        } else {
-
-            Toast.makeText(this, "Enter less quantity!", Toast.LENGTH_SHORT).show();
+            }
 
         }
 

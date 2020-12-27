@@ -100,33 +100,41 @@ public class ViewFertilizers extends AppCompatActivity {
         val2 = Integer.valueOf(checkvalue);
 
 
-        if (val2 <= val1) {
+        if (checkvalue.isEmpty()){
+            Toast.makeText(this, "Please enter quantity!", Toast.LENGTH_SHORT).show();
+        }else {
 
-            set.addAll(FertItemSet);
+            if (val2 <= val1) {
 
-            //Collections.reverse(asList);
-            //Log.i("Reversed List Value", String.valueOf(asList));
+                set.addAll(FertItemSet);
 
-            String finalItem;
+                //Collections.reverse(asList);
+                //Log.i("Reversed List Value", String.valueOf(asList));
 
-            finalItem = "Item: " + getIntent().getStringExtra("type") + "  Quantity: " + editTextNumber.getText().toString() + "  Rs: " + getIntent().getStringExtra("rate");
+                String finalItem;
 
-            Log.i("Type of XYZ", String.valueOf(finalItem));
+                finalItem = "Item: " + getIntent().getStringExtra("type") + "  Quantity: " + editTextNumber.getText().toString() + "  Rs: " + getIntent().getStringExtra("rate");
+
+                Log.i("Type of XYZ", String.valueOf(finalItem));
 
             set.add(finalItem);
 
-            Log.i("HashSet Value", String.valueOf(set));
 
-            SharedPreferences hashSetValue5 = getSharedPreferences("FerT_hashSet_value", 0);
-            SharedPreferences.Editor editor15 = hashSetValue5.edit();
-            editor15.putStringSet("Fert_Final_List", set);
-            editor15.commit();
+                Log.i("HashSet Value", String.valueOf(set));
 
-            Toast.makeText(this, "Item Added!", Toast.LENGTH_SHORT).show();
+                SharedPreferences hashSetValue5 = getSharedPreferences("FerT_hashSet_value", 0);
+                SharedPreferences.Editor editor15 = hashSetValue5.edit();
+                editor15.putStringSet("Fert_Final_List", set);
+                editor15.commit();
 
-        } else {
 
-            Toast.makeText(this, "Enter less quantity!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Item Added!", Toast.LENGTH_SHORT).show();
+
+            } else {
+
+                Toast.makeText(this, "Enter less quantity!", Toast.LENGTH_SHORT).show();
+
+            }
 
         }
 

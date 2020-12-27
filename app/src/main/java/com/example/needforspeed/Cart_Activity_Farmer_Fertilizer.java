@@ -16,6 +16,11 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -27,10 +32,12 @@ public class Cart_Activity_Farmer_Fertilizer extends AppCompatActivity {
 
     ListView itemsCheckList;
     Set<String> FertItemsSet;
-    List<String> FinalListItems;
+
 
     String toRemove;
     String[] listItems;
+
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +48,11 @@ public class Cart_Activity_Farmer_Fertilizer extends AppCompatActivity {
         actionBar.hide();
 
         Toast.makeText(this, "Long press on the item to delete it!", Toast.LENGTH_LONG).show();
+
+        FirebaseAuth mAuth;
+
+        mAuth = FirebaseAuth.getInstance();
+        reference = FirebaseDatabase.getInstance().getReference().child("farmer").child(mAuth.getCurrentUser().getUid()).child("ListItems");
 
         addressEditText = findViewById(R.id.addressEditText);
         itemsCheckList = findViewById(R.id.listView);
@@ -55,8 +67,6 @@ public class Cart_Activity_Farmer_Fertilizer extends AppCompatActivity {
         listItems = new String[FertItemsSet.size()];
         FertItemsSet.toArray(listItems);
 
-        FinalListItems = Arrays.asList(listItems);
-        Collections.reverse(FinalListItems);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listItems);
 
@@ -111,6 +121,14 @@ public class Cart_Activity_Farmer_Fertilizer extends AppCompatActivity {
                             finish();
 
  */
+                            List<String> FinalListItems = new ArrayList<>();
+
+                            FinalListItems.addAll(FertItemsSet2);
+
+                            FinalListItems.remove("Items are: ");
+
+                            reference.push().setValue(FinalListItems);
+
                             Intent order = new Intent(Cart_Activity_Farmer_Fertilizer.this, placeOrderActivity.class);
                             startActivity(order);
 

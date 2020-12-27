@@ -52,6 +52,11 @@ public class shoppingScreen extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "You're already up to date",Toast.LENGTH_SHORT).show();
                 return true;
 
+            case R.id.myOrder:
+                Intent preOrder = new Intent(this, Previous_orders_Farmer.class);
+                startActivity(preOrder);
+                return true;
+
             case R.id.settings:
                 Intent settings = new Intent(this, SettingsActivity.class);
                 startActivity(settings);

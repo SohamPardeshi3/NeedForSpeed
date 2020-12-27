@@ -1,6 +1,7 @@
 package com.example.needforspeed;
 
 import androidx.annotation.ColorInt;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,9 +23,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -44,6 +50,8 @@ public class CartActivity extends AppCompatActivity {
     String toRemove;
     String[] listItems;
 
+    DatabaseReference reference;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +61,11 @@ public class CartActivity extends AppCompatActivity {
         actionBar.hide();
 
         Toast.makeText(this, "Long press on the item to delete it!", Toast.LENGTH_LONG).show();
+
+        FirebaseAuth mAuth;
+
+        mAuth = FirebaseAuth.getInstance();
+        reference = FirebaseDatabase.getInstance().getReference().child("wholesaler").child(mAuth.getCurrentUser().getUid()).child("ListItems");
 
         addressEditText = findViewById(R.id.addressEditText);
         itemsCheckList = findViewById(R.id.listView);
@@ -66,14 +79,12 @@ public class CartActivity extends AppCompatActivity {
         listItems = new String[ItemsSet.size()];
         ItemsSet.toArray(listItems);
 
-        FinalListItems = Arrays.asList(listItems);
-        Collections.reverse(FinalListItems);
 
         //rootRef = FirebaseDatabase.getInstance().getReference();
 
         //demoRef = rootRef.child("Demo");
 
-        //demoRef.setValue(FinalListItems);
+//        demoRef.setValue(FinalListItems);
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listItems);
 
@@ -170,8 +181,15 @@ public class CartActivity extends AppCompatActivity {
                             editor20.putStringSet("Previous_Orders_List", MyOrders);
                             editor20.commit();
 
-                            
-                            Intent order = new Intent(CartActivity.this, placeOrderActivity.class);
+                            List<String> FinalListItems = new ArrayList<>();
+
+                            FinalListItems.addAll(MyOrders);
+
+                            FinalListItems.remove("Items are: ");
+
+                            reference.push().setValue(FinalListItems);
+
+                            Intent order = new Intent(CartActivity.this, PlaceActivity_wholesaler.class);
                             startActivity(order);
 
                         }

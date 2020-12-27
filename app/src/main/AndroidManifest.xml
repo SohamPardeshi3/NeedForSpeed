@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".items_received_orders_2"></activity>
+        <activity android:name=".items_received_orders_2"/>
         <activity android:name=".items_received_orders" />
         <activity android:name=".rent_received_orders_2" />
         <activity android:name=".rent_received_orders" />
@@ -22,6 +22,8 @@
         <activity android:name=".fert_received_orders_2" />
         <activity android:name=".fert_received_orders" />
         <activity android:name=".CartActivity_Farmer_Rent" />
+        <activity android:name=".Previous_orders_Farmer"/>
+        <activity android:name=".PlaceActivity_wholesaler" />
         <activity android:name=".PreviousOrders_WHolesaler" />
         <activity android:name=".WebActivity" />
         <activity android:name=".ViewRentedItems" />
@@ -100,5 +102,10 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>

@@ -28,7 +28,7 @@ public class wholesaler_shopping_screen extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater menuInflater = getMenuInflater();
-        menuInflater.inflate(R.menu.shopping_screen_menu, menu);
+        menuInflater.inflate(R.menu.wholesaler_shopping_screen_menu, menu);
 
         return super.onCreateOptionsMenu(menu);
     }
@@ -39,33 +39,31 @@ public class wholesaler_shopping_screen extends AppCompatActivity {
 
         switch (item.getItemId())
         {
-            case R.id.profile1:
+            case R.id.person:
                 Intent profile = new Intent(this, profile.class);
                 startActivity(profile);
 
                 return true;
 
-            case R.id.myOrder:
+            case R.id.orderlist:
                 Intent myOrderIntent = new Intent(this, PreviousOrders_WHolesaler.class);
                 startActivity(myOrderIntent);
 
                 return true;
 
-            case R.id.update:
+            case R.id.updatetoApp:
                 Toast.makeText(getApplicationContext(), "You're already up to date",Toast.LENGTH_SHORT).show();
                 return true;
 
-            case R.id.settings:
+            case R.id.settingsforApp:
                 Intent settings = new Intent(this, SettingsActivity.class);
                 startActivity(settings);
 
                 return true;
 
-            case R.id.help:
-                Log.i("help", "help clicked");
-                return true;
 
-            case R.id.logout:
+
+            case R.id.log:
 
                 SharedPreferences settings8 = getSharedPreferences("your_preference_name8", 0);
                 SharedPreferences.Editor editor8 = settings8.edit();

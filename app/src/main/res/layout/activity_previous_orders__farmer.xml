@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".PreviousOrders_WHolesaler">
+    tools:context=".Previous_orders_Farmer">
 
     <ImageView
-        android:id="@+id/imageView20"
-        android:layout_width="391dp"
-        android:layout_height="88dp"
+        android:id="@+id/imageView21"
+        android:layout_width="266dp"
+        android:layout_height="102dp"
         android:layout_marginTop="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -19,15 +19,13 @@
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="412dp"
-        android:layout_height="748dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="410dp"
+        android:layout_height="720dp"
+        android:layout_marginBottom="26dp"
+        android:layout_marginEnd="11dp"
+        android:layout_marginStart="11dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView20" />
-
+        app:layout_constraintTop_toBottomOf="@+id/imageView21" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -16,6 +16,11 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -28,11 +33,11 @@ public class CartActivity_Farmer_Seeds extends AppCompatActivity {
 
     ListView itemsCheckList;
     Set<String> SeedsItemSet;
-    List<String> FinalListItems;
 
     String toRemove;
     String[] listItems;
 
+    DatabaseReference reference;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +48,11 @@ public class CartActivity_Farmer_Seeds extends AppCompatActivity {
         actionBar.hide();
 
         Toast.makeText(this, "Long press on the item to delete it!", Toast.LENGTH_LONG).show();
+
+        FirebaseAuth mAuth;
+
+        mAuth = FirebaseAuth.getInstance();
+        reference = FirebaseDatabase.getInstance().getReference().child("farmer").child(mAuth.getCurrentUser().getUid()).child("ListItems");
 
 
         addressEditText = findViewById(R.id.addressEditText);
@@ -59,8 +69,7 @@ public class CartActivity_Farmer_Seeds extends AppCompatActivity {
         listItems = new String[SeedsItemSet.size()];
         SeedsItemSet.toArray(listItems);
 
-        FinalListItems = Arrays.asList(listItems);
-        Collections.reverse(FinalListItems);
+
 
         ArrayAdapter<String> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, listItems);
 
@@ -116,7 +125,17 @@ public class CartActivity_Farmer_Seeds extends AppCompatActivity {
                             editor12.apply();
                             finish();
 
+
+
  */
+                            List<String> FinalListItems = new ArrayList<>();
+
+                            FinalListItems.addAll(SeedsItemList2);
+
+                            FinalListItems.remove("Items are: ");
+
+                            reference.push().setValue(FinalListItems);
+
                             Intent order = new Intent(CartActivity_Farmer_Seeds.this, placeOrderActivity.class);
                             startActivity(order);
 
