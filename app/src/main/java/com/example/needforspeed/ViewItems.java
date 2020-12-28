@@ -12,6 +12,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,7 +27,7 @@ public class ViewItems extends AppCompatActivity {
 
     TextView fromItemsTextView, typeItemsTextView, quantityItemsTextView, rateItemsTextView;
     EditText editTextNumber;
-    String value, checkvalue;
+    String value, checkvalue, Name, Location;
     int val1,val2;
 
     Set<String> set = new HashSet<>();
@@ -52,16 +60,26 @@ public class ViewItems extends AppCompatActivity {
         quantityItemsTextView.setText(getIntent().getStringExtra("quantity"));
         rateItemsTextView.setText(getIntent().getStringExtra("rate"));
 
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("wholesaler").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Name = snapshot.child("name").getValue().toString();
+                Location = snapshot.child("location").getValue().toString();
+            }
 
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
 
-
+            }
+        });
 
     }
 
-    public void addToCart(View view){
+    public void addToCart(View view) {
 
         SharedPreferences hashSetValue = getSharedPreferences("hashSet_value", 0);
-        Set<String>  ItemsSet = hashSetValue.getStringSet("Final_List", null);
+        Set<String> ItemsSet = hashSetValue.getStringSet("Final_List", null);
 
         Log.i("Item Set Value", String.valueOf(ItemsSet));
 
@@ -70,9 +88,11 @@ public class ViewItems extends AppCompatActivity {
         Log.i("Value of val1", String.valueOf(val1));
         Log.i("Value of val2", String.valueOf(val2));
 
-
         val2 = Integer.valueOf(checkvalue);
 
+        if (checkvalue.isEmpty()) {
+            Toast.makeText(this, "Please enter quantity!", Toast.LENGTH_SHORT).show();
+        } else {
 
             if (val2 <= val1) {
 
@@ -103,24 +123,21 @@ public class ViewItems extends AppCompatActivity {
             }
 
         }
-
-
-
-
-
-
-
-
-
-
-
-
-    public void DoneRef(View view){
-
-
-        Intent intent = new Intent(this, wholesaler_buy_items.class);
-        startActivity(intent);
-
     }
 
-}
+        public void DoneRef(View view){
+
+            HashMap<String, String> itemsMap = new HashMap<>();
+            itemsMap.put("buyer", Name);
+            itemsMap.put("quantity", checkvalue);
+            itemsMap.put("type", getIntent().getStringExtra("type"));
+            itemsMap.put("seller", getIntent().getStringExtra("from"));
+            itemsMap.put("location", Location);
+            FirebaseDatabase.getInstance().getReference().child("farmerOrders").child("itemOrders").push().setValue(itemsMap);
+
+            Intent intent = new Intent(this, wholesaler_buy_items.class);
+            startActivity(intent);
+
+        }
+
+    }

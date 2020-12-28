@@ -45,7 +45,7 @@ public class wholesaler_buy_items extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
 
         builder.setTitle("Disclaimer")
-                .setMessage("Tap on the Item to know more about it or to add it in the cart!")
+                .setMessage("Tap on the Item to know more about it or to add it in the cart and then click on Proceed!")
                 .setPositiveButton("Okay", null)
                 .show();
 

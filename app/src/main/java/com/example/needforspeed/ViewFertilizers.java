@@ -12,6 +12,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -24,10 +32,11 @@ public class ViewFertilizers extends AppCompatActivity {
     TextView descTextView;
 
     EditText editTextNumber;
-    String value, checkvalue;
+    String value, checkvalue, Name, Location;
     int val1,val2;
 
     Set<String> set = new HashSet<>();
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +68,20 @@ public class ViewFertilizers extends AppCompatActivity {
         rateTextView.setText(getIntent().getStringExtra("rate"));
         descTextView.setText(getIntent().getStringExtra("description"));
 
+        DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference();
+        mDatabase.child("farmer").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot snapshot) {
+                Name = snapshot.child("name").getValue().toString();
+                Location = snapshot.child("location").getValue().toString();
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+
     }
 
     public void addToCart(View view){
@@ -77,46 +100,41 @@ public class ViewFertilizers extends AppCompatActivity {
         val2 = Integer.valueOf(checkvalue);
 
 
-        if (val2 <= val1) {
+        if (checkvalue.isEmpty()){
+            Toast.makeText(this, "Please enter quantity!", Toast.LENGTH_SHORT).show();
+        }else {
 
-            set.addAll(FertItemSet);
+            if (val2 <= val1) {
 
-            //Collections.reverse(asList);
-            //Log.i("Reversed List Value", String.valueOf(asList));
+                set.addAll(FertItemSet);
 
-            String finalItem;
+                //Collections.reverse(asList);
+                //Log.i("Reversed List Value", String.valueOf(asList));
 
-            finalItem = "Item: " + getIntent().getStringExtra("type") + "  Quantity: " + editTextNumber.getText().toString() + "  Rs: " + getIntent().getStringExtra("rate");
+                String finalItem;
 
-            Log.i("Type of XYZ", String.valueOf(finalItem));
+                finalItem = "Item: " + getIntent().getStringExtra("type") + "  Quantity: " + editTextNumber.getText().toString() + "  Rs: " + getIntent().getStringExtra("rate");
 
-
+                Log.i("Type of XYZ", String.valueOf(finalItem));
 
             set.add(finalItem);
 
 
+                Log.i("HashSet Value", String.valueOf(set));
+
+                SharedPreferences hashSetValue5 = getSharedPreferences("FerT_hashSet_value", 0);
+                SharedPreferences.Editor editor15 = hashSetValue5.edit();
+                editor15.putStringSet("Fert_Final_List", set);
+                editor15.commit();
 
 
+                Toast.makeText(this, "Item Added!", Toast.LENGTH_SHORT).show();
 
+            } else {
 
+                Toast.makeText(this, "Enter less quantity!", Toast.LENGTH_SHORT).show();
 
-
-
-            Log.i("HashSet Value", String.valueOf(set));
-
-            SharedPreferences hashSetValue5 = getSharedPreferences("FerT_hashSet_value", 0);
-            SharedPreferences.Editor editor15 = hashSetValue5.edit();
-            editor15.putStringSet("Fert_Final_List", set);
-            editor15.commit();
-
-
-
-
-            Toast.makeText(this, "Item Added!", Toast.LENGTH_SHORT).show();
-
-        } else {
-
-            Toast.makeText(this, "Enter less quantity!", Toast.LENGTH_SHORT).show();
+            }
 
         }
 
@@ -125,6 +143,14 @@ public class ViewFertilizers extends AppCompatActivity {
     }
 
     public void DoneRef(View view){
+
+        HashMap<String, String> wordersMap = new HashMap<>();
+        wordersMap.put("buyer", Name);
+        wordersMap.put("quantity", checkvalue);
+        wordersMap.put("type", getIntent().getStringExtra("type"));
+        wordersMap.put("seller", getIntent().getStringExtra("from"));
+        wordersMap.put("location", Location);
+        FirebaseDatabase.getInstance().getReference().child("wholesalerOrders").child("fertOrders").push().setValue(wordersMap);
 
 
         Intent intent = new Intent(this, farmer_buy_fertilizers.class);

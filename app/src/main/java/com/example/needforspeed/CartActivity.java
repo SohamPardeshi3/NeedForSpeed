@@ -45,7 +45,7 @@ public class CartActivity extends AppCompatActivity {
 
     ListView itemsCheckList;
     Set<String> ItemsSet;
-
+    List<String> FinalListItems;
 
     String toRemove;
     String[] listItems;
@@ -78,7 +78,6 @@ public class CartActivity extends AppCompatActivity {
 
         listItems = new String[ItemsSet.size()];
         ItemsSet.toArray(listItems);
-
 
 
         //rootRef = FirebaseDatabase.getInstance().getReference();
@@ -189,7 +188,7 @@ public class CartActivity extends AppCompatActivity {
                             FinalListItems.remove("Items are: ");
 
                             reference.push().setValue(FinalListItems);
-                            
+
                             Intent order = new Intent(CartActivity.this, PlaceActivity_wholesaler.class);
                             startActivity(order);
 

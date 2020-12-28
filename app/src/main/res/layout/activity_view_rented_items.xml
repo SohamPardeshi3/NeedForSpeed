@@ -40,7 +40,9 @@
         android:layout_marginTop="40dp"
         android:background="@drawable/recedittext"
         android:ems="10"
+        android:hint=" days"
         android:inputType="number"
+        android:paddingLeft="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +62,7 @@
         android:id="@+id/textView11"
         android:layout_width="65dp"
         android:layout_height="33dp"
-        android:layout_marginStart="33dp"
+        android:layout_marginStart="42dp"
         android:layout_marginTop="24dp"
         android:text="From :"
         android:textColor="#4CAF50"
@@ -85,12 +87,13 @@
         android:id="@+id/textView13"
         android:layout_width="79dp"
         android:layout_height="29dp"
-        android:layout_marginStart="45dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="24dp"
-        android:text="Item:"
+        android:text="Item :"
         android:textColor="#4CAF50"
         android:textSize="22sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/quantityEquipTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
@@ -102,18 +105,20 @@
         android:layout_marginTop="24dp"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView13"
         app:layout_constraintTop_toBottomOf="@+id/fromEquipTextView" />
 
     <TextView
         android:id="@+id/textView14"
         android:layout_width="119dp"
         android:layout_height="58dp"
-        android:layout_marginStart="45dp"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="24dp"
-        android:text="Item Rate (Per day):"
+        android:text="Item Rate :(per day)"
         android:textColor="#4CAF50"
         android:textSize="22sp"
         android:textStyle="bold"
+        app:layout_constraintEnd_toStartOf="@+id/rateEquipTextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView13" />
 
@@ -125,6 +130,7 @@
         android:layout_marginTop="24dp"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView14"
         app:layout_constraintTop_toBottomOf="@+id/quantityEquipTextView" />
 
     <TextView
@@ -132,12 +138,12 @@
         android:layout_width="318dp"
         android:layout_height="58dp"
         android:layout_marginTop="39dp"
-        android:fontFamily="@font/allerta"
-        android:text="How many Days you want to rent the truck?"
+        android:fontFamily="sans-serif"
+        android:text="How many days you want to rent the truck?"
         android:textAlignment="center"
         android:textColor="#4CAF50"
         android:textSize="24sp"
-        android:textStyle="bold|italic"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
