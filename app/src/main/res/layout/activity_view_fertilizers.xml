@@ -10,166 +10,215 @@
         android:id="@+id/imageView14"
         android:layout_width="304dp"
         android:layout_height="55dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/nfs" />
 
     <TextView
         android:id="@+id/textView11"
-        android:layout_width="65dp"
-        android:layout_height="33dp"
+        android:layout_width="176dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
         android:text="From :"
         android:textColor="#4CAF50"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/guideline41" />
 
     <TextView
         android:id="@+id/textView12"
-        android:layout_width="125dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="93dp"
+        android:layout_width="176dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="80dp"
         android:text="Item Name :"
         android:textColor="#4CAF50"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+        app:layout_constraintTop_toTopOf="@+id/guideline41" />
 
     <TextView
         android:id="@+id/textView13"
-        android:layout_width="145dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="33dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="176dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="136dp"
         android:text="Item Quantity :"
         android:textColor="#4CAF50"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+        app:layout_constraintTop_toTopOf="@+id/guideline41" />
 
     <TextView
         android:id="@+id/textView14"
-        android:layout_width="125dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="25dp"
+        android:layout_width="176dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="188dp"
         android:text="Item Rate :"
         android:textColor="#4CAF50"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintTop_toTopOf="@+id/guideline41" />
 
     <TextView
         android:id="@+id/textView15"
-        android:layout_width="178dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="23dp"
+        android:layout_width="329dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="28dp"
         android:text="Item Description :"
         android:textColor="#4CAF50"
         android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        app:layout_constraintTop_toTopOf="@+id/guideline42" />
 
     <TextView
         android:id="@+id/fromTextView"
         android:layout_width="151dp"
-        android:layout_height="33dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="216dp"
+        android:layout_marginTop="24dp"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline41" />
 
     <TextView
         android:id="@+id/typeTextView"
         android:layout_width="151dp"
-        android:layout_height="33dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="216dp"
+        android:layout_marginTop="80dp"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/guideline41" />
 
     <TextView
         android:id="@+id/quantityTextView"
         android:layout_width="151dp"
-        android:layout_height="33dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="148dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="216dp"
+        android:layout_marginTop="136dp"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/textView13"
-        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline41" />
 
     <TextView
         android:id="@+id/rateTextView"
         android:layout_width="151dp"
-        android:layout_height="33dp"
-        android:layout_marginTop="22dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="216dp"
+        android:layout_marginTop="188dp"
         android:textSize="24sp"
-        app:layout_constraintStart_toEndOf="@+id/textView14"
-        app:layout_constraintTop_toBottomOf="@+id/textView13" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline41" />
 
     <TextView
         android:id="@+id/descTextView"
         android:layout_width="350dp"
         android:layout_height="85dp"
-        android:layout_marginStart="53dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="68dp"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintTop_toTopOf="@+id/guideline42" />
+
 
     <TextView
         android:id="@+id/EnterQuantitytextView10"
-        android:layout_width="193dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="22dp"
+        android:layout_width="321dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="172dp"
         android:text="Enter Quantity:"
         android:textColor="#4CAF50"
         android:textSize="24sp"
         android:textStyle="bold|italic"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descTextView" />
-
+        app:layout_constraintTop_toTopOf="@+id/guideline42" />
 
     <EditText
         android:id="@+id/EnterQunatityeditTextNumber"
-        android:layout_width="270dp"
-        android:layout_height="47dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="26dp"
+        android:layout_width="272dp"
+        android:layout_height="41dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="216dp"
         android:background="@drawable/recedittext"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EnterQuantitytextView10" />
+        app:layout_constraintTop_toTopOf="@+id/guideline42" />
 
     <Button
         android:id="@+id/AddtoCartbutton7"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="236dp"
         android:layout_height="41dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="12dp"
         android:onClick="addToCart"
         android:text="Add To Cart"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/EnterQunatityeditTextNumber" />
+        app:layout_constraintTop_toTopOf="@+id/guideline43" />
 
     <Button
         android:id="@+id/Donebutton9"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="236dp"
         android:layout_height="41dp"
-        android:layout_marginStart="88dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="60dp"
         android:onClick="DoneRef"
         android:text="Done"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AddtoCartbutton7" />
+        app:layout_constraintTop_toTopOf="@+id/guideline43" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline40"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline41"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="67dp"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="313dp"
+        app:layout_constraintGuide_percent="0.42" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline43"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="616dp"
+        app:layout_constraintGuide_percent="0.81" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="751dp"
+        app:layout_constraintGuide_percent="1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
