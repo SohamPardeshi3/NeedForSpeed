@@ -45,10 +45,10 @@
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="128dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="290dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="TODO"
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"

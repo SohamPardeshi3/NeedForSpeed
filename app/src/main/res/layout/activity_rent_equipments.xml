@@ -10,8 +10,8 @@
         android:id="@+id/imageView14"
         android:layout_width="404dp"
         android:layout_height="79dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/nfs" />
@@ -20,112 +20,124 @@
         android:id="@+id/textView3"
         android:layout_width="169dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="225dp"
-        android:layout_marginStart="65dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="16dp"
         android:text="Add Items:"
         android:textColor="#4CAF50"
         android:textSize="30sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
-
-    <TextView
-        android:id="@+id/textView11"
-        android:layout_width="166dp"
-        android:layout_height="33dp"
-        android:layout_marginEnd="225dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="20dp"
-        android:text="1. Item Name:"
-        android:textColor="#4CAF50"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3" />
-
-    <EditText
-        android:id="@+id/rentNameEditText"
-        android:layout_width="298dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="98dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginTop="8dp"
-        android:background="@drawable/recedittext"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:paddingLeft="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView11" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="166dp"
-        android:layout_height="33dp"
-        android:layout_marginEnd="225dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="20dp"
-        android:text="2. Item Rate:"
-        android:textColor="#4CAF50"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rentNameEditText" />
+        app:layout_constraintTop_toTopOf="@+id/guideline51" />
 
     <EditText
         android:id="@+id/rentAmountEditText"
-        android:layout_width="293dp"
-        android:layout_height="49dp"
-        android:layout_marginEnd="98dp"
-        android:layout_marginStart="65dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="298dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="248dp"
         android:background="@drawable/recedittext"
         android:ems="10"
         android:hint="  per day"
         android:inputType="number"
         android:paddingLeft="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toTopOf="@+id/guideline51" />
+
+    <EditText
+        android:id="@+id/rentNameEditText"
+        android:layout_width="298dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="120dp"
+        android:background="@drawable/recedittext"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline51" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="166dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="188dp"
+        android:text="2. Item Rate:"
+        android:textColor="#4CAF50"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline51" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="166dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="76dp"
+        android:text="1. Item Name:"
+        android:textColor="#4CAF50"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline51" />
 
     <ImageButton
         android:id="@+id/rentEqui"
         android:layout_width="165dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="32dp"
-        android:layout_marginEnd="5dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="136dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="32dp"
         android:background="#FAFAFA"
         android:onClick="rentEquip"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/discardEqui"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addQuantityEditText"
+        app:layout_constraintTop_toTopOf="@+id/guideline52"
         app:srcCompat="@drawable/proceed" />
 
     <ImageButton
         android:id="@+id/discardEqui"
         android:layout_width="165dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="136dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="12dp"
         android:background="#FAFAFA"
         android:onClick="discardEquip"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/rentEqui"
-        app:layout_constraintTop_toBottomOf="@+id/addQuantityEditText"
+        app:layout_constraintTop_toTopOf="@+id/guideline52"
         app:srcCompat="@drawable/discard" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline50"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline51"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="126dp"
+        app:layout_constraintGuide_percent="0.14" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline52"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="576dp"
+        app:layout_constraintGuide_percent=".84" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline53"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="746dp"
+        app:layout_constraintGuide_percent="1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

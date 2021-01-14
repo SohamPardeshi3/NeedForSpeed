@@ -10,9 +10,10 @@
     <Button
         android:id="@+id/button5"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:layout_width="132dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="104dp"
+        android:layout_width="160dp"
+        android:layout_height="59dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="120dp"
         android:onClick="Reload"
         android:text="Didnt Load the Address? Click Here"
         android:textColor="#4CAF50"
@@ -23,10 +24,10 @@
 
     <EditText
         android:id="@+id/addressEditText"
-        android:layout_width="315dp"
-        android:layout_height="39dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="68dp"
+        android:layout_width="318dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="72dp"
         android:background="@drawable/recedittext"
         android:ems="10"
         android:inputType="textPersonName"
@@ -39,8 +40,8 @@
 
     <ImageButton
         android:id="@+id/placeOrderButton"
-        android:layout_width="342dp"
-        android:layout_height="55dp"
+        android:layout_width="311dp"
+        android:layout_height="52dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:background="#FAFAFA"
@@ -54,8 +55,8 @@
         android:id="@+id/locationButton"
         android:layout_width="180dp"
         android:layout_height="25dp"
-        android:layout_marginTop="124dp"
-        android:layout_marginEnd="4dp"
+        android:layout_marginTop="136dp"
+        android:layout_marginEnd="16dp"
         android:background="#FAFAFA"
         android:onClick="nextMap"
         android:scaleType="fitXY"
@@ -67,8 +68,8 @@
         android:id="@+id/imageView6"
         android:layout_width="246dp"
         android:layout_height="50dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="116dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="92dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ordersummary" />
@@ -77,18 +78,18 @@
         android:id="@+id/imageView10"
         android:layout_width="220dp"
         android:layout_height="50dp"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline22"
         app:srcCompat="@drawable/enteraddress" />
 
     <ImageView
         android:id="@+id/imageView8"
-        android:layout_width="200dp"
-        android:layout_height="90dp"
-        android:layout_marginStart="104dp"
-        android:layout_marginTop="8dp"
+        android:layout_width="290dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="16dp"
         android:scaleType="fitCenter"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -96,10 +97,10 @@
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="376dp"
-        android:layout_height="231dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="327dp"
+        android:layout_height="236dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline21" />
 
@@ -117,7 +118,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="170dp"
-        app:layout_constraintGuide_percent="0.23" />
+        app:layout_constraintGuide_percent="0.21" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline22"
@@ -125,7 +126,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="473dp"
-        app:layout_constraintGuide_percent="0.62" />
+        app:layout_constraintGuide_percent="0.58" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline23"
@@ -142,5 +143,6 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="20dp"
         app:layout_constraintGuide_percent="1" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -19,15 +19,17 @@
 
     <ListView
         android:id="@+id/listView"
-        android:layout_width="412dp"
-        android:layout_height="748dp"
-        android:layout_marginBottom="5dp"
-        android:layout_marginEnd="10dp"
+        android:layout_width="378dp"
+        android:layout_height="568dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView20" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView20"
+        app:layout_constraintVertical_bias="0.13" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
