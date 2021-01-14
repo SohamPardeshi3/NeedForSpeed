@@ -13,7 +13,7 @@ public class additems extends AppCompatActivity {
 
     EditText itemName, itemRate, itemQuantity;
 
-//    String item, quantity, rate;
+//    String item, quantity and rate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
