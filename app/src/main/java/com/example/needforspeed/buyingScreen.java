@@ -88,10 +88,10 @@ public class buyingScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buying_screen);
 
-        buyingSearchView = findViewById(R.id.buyingSearchView);
+        //buyingSearchView = findViewById(R.id.buyingSearchView);
         // search code
 
-        buyingSearchView.setIconified(false);
-        buyingSearchView.clearFocus();
+        //buyingSearchView.setIconified(false);
+        //buyingSearchView.clearFocus();
     }
 }

@@ -10,70 +10,89 @@
     <ImageButton
         android:id="@+id/sellImageButton"
         android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginStart="35dp"
+        android:layout_height="138dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="20dp"
         android:background="#FFFFFF"
         android:onClick="sellItems"
         android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/guideline26"
         app:srcCompat="@drawable/sitems" />
 
     <ImageButton
         android:id="@+id/buyImageButton"
         android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginStart="35dp"
+        android:layout_height="138dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="24dp"
         android:background="#FFFFFF"
         android:onClick="wholesaleBuy"
         android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sellImageButton"
+        app:layout_constraintTop_toTopOf="@+id/guideline27"
         app:srcCompat="@drawable/rbuyitems" />
 
-    <ImageButton
-        android:id="@+id/receivedOrdersButton"
+    <ImageView
+        android:id="@+id/imageView6"
         android:layout_width="300dp"
-        android:layout_height="200dp"
-        android:backgroundTint="#FFFFFF"
-        android:onClick="receivedOrders"
-        android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_height="138dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="36dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buyImageButton"
+        app:layout_constraintTop_toTopOf="@+id/guideline28"
         app:srcCompat="@drawable/rorders" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="71dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="200dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="104dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="TODO"
         android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/nfs" />
 
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="246dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="149dp"
-        android:layout_marginStart="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"
-        app:srcCompat="@drawable/chooseopt" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="140dp"
+        app:layout_constraintGuide_percent=".2" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline27"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="329dp"
+        app:layout_constraintGuide_percent="0.45" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline28"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="506dp"
+        app:layout_constraintGuide_percent="0.71" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="740dp"
+        app:layout_constraintGuide_percent="1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,93 +11,82 @@
         android:id="@+id/nameEditText"
         android:layout_width="300dp"
         android:layout_height="42dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginStart="51dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="64dp"
         android:background="@drawable/input"
         android:ems="10"
         android:hint="   Full Name"
         android:inputType="textPersonName"
         android:paddingLeft="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
-
-    <EditText
-        android:id="@+id/numberEditText"
-        android:layout_width="300dp"
-        android:layout_height="42dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginStart="51dp"
-        android:layout_marginTop="4dp"
-        android:background="@drawable/input"
-        android:ems="10"
-        android:hint="   Phone Number"
-        android:inputType="phone"
-        android:paddingLeft="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView11" />
+        app:layout_constraintTop_toTopOf="@+id/guideline47" />
 
     <ImageButton
         android:id="@+id/saveButton"
-        android:layout_width="342dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="109dp"
+        android:layout_width="311dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
         android:background="#FAFAFA"
         android:onClick="save"
         android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numberEditText"
+        app:layout_constraintTop_toTopOf="@+id/guideline48"
         app:srcCompat="@drawable/save" />
 
     <ImageButton
         android:id="@+id/addToCartButton"
-        android:layout_width="342dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="192dp"
+        android:layout_width="311dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="108dp"
         android:background="#FAFAFA"
         android:onClick="logout"
         android:scaleType="fitXY"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numberEditText"
+        app:layout_constraintTop_toTopOf="@+id/guideline48"
         app:srcCompat="@drawable/logout" />
 
     <ImageView
         android:id="@+id/imageView11"
         android:layout_width="158dp"
         android:layout_height="48dp"
-        android:layout_marginEnd="222dp"
-        android:layout_marginStart="66dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="136dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nameEditText"
+        app:layout_constraintTop_toTopOf="@+id/guideline47"
         app:srcCompat="@drawable/phone" />
+
+    <EditText
+        android:id="@+id/numberEditText"
+        android:layout_width="300dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="200dp"
+        android:background="@drawable/input"
+        android:ems="10"
+        android:hint="   Phone Number"
+        android:inputType="phone"
+        android:paddingLeft="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline47" />
 
     <ImageView
         android:id="@+id/imageView10"
         android:layout_width="119dp"
         android:layout_height="28dp"
-        android:layout_marginEnd="243dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="31dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView9"
+        app:layout_constraintTop_toTopOf="@+id/guideline47"
         app:srcCompat="@drawable/name" />
 
     <ImageView
         android:id="@+id/imageView8"
-        android:layout_width="223dp"
-        android:layout_height="126dp"
-        android:layout_marginTop="41dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_width="197dp"
+        android:layout_height="123dp"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="28dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/profile" />
@@ -106,11 +95,42 @@
         android:id="@+id/imageView9"
         android:layout_width="222dp"
         android:layout_height="36dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="172dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView8"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/editprofile" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline46"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline47"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="249dp"
+        app:layout_constraintGuide_percent="0.32" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline48"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="523dp"
+        app:layout_constraintGuide_percent="0.7" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline49"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="729dp"
+        app:layout_constraintGuide_percent="1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

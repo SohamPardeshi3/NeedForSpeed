@@ -8,88 +8,95 @@
 
     <ImageButton
         android:id="@+id/seedsButton"
-        android:layout_width="150dp"
-        android:layout_height="250dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="3dp"
+        android:layout_width="140dp"
+        android:layout_height="220dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="24dp"
         android:background="#FAFAFA"
         android:onClick="seeds"
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/guideline12"
         app:srcCompat="@drawable/seeds" />
 
     <ImageButton
         android:id="@+id/equipmentsButton"
-        android:layout_width="150dp"
-        android:layout_height="250dp"
-        android:layout_marginBottom="24dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="140dp"
+        android:layout_height="220dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="23dp"
         android:background="#FAFAFA"
         android:onClick="buyEquip"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/seedsButton"
+        app:layout_constraintTop_toTopOf="@+id/guideline13"
         app:srcCompat="@drawable/equipments" />
 
     <ImageButton
         android:id="@+id/fertilizersButton"
-        android:layout_width="150dp"
-        android:layout_height="250dp"
-        android:layout_marginBottom="174dp"
-        android:layout_marginEnd="48dp"
-        android:layout_marginStart="39dp"
-        android:layout_marginTop="136dp"
+        android:layout_width="140dp"
+        android:layout_height="220dp"
+        android:layout_marginTop="164dp"
+        android:layout_marginEnd="40dp"
         android:background="#FAFAFA"
         android:onClick="buyFertilizers"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/seedsButton"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6"
+        app:layout_constraintTop_toTopOf="@+id/guideline12"
         app:srcCompat="@drawable/fertilizers" />
 
     <ImageView
         android:id="@+id/imageView6"
         android:layout_width="246dp"
         android:layout_height="50dp"
-        android:layout_marginEnd="149dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="96dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buyingSearchView"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/categories" />
 
     <ImageView
         android:id="@+id/imageView5"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:layout_marginEnd="71dp"
-        android:layout_marginStart="70dp"
-        android:layout_marginTop="10dp"
+        android:layout_width="290dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="TODO"
         android:scaleType="fitCenter"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/nfs" />
 
-    <SearchView
-        android:id="@+id/buyingSearchView"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/search"
-        android:clickable="true"
-        android:queryHint="Search"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView5"></SearchView>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="435dp"
+        app:layout_constraintGuide_percent="0" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="168dp"
+        app:layout_constraintGuide_percent=".23" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline13"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp"
+        app:layout_constraintGuide_percent="0.59" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline19"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="825dp"
+        app:layout_constraintGuide_percent="1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
